@@ -2,7 +2,7 @@
 % Anhui University Thesis Template for Bachelorn
 %
 %   Based on：
-%       USTC Thesis Template "USTC_Thesis_Bachelor_20120511" 
+%       USTC Thesis Template "USTC_Thesis_Bachelor_20120511"
 %           by XPS@USTC et al.
 %
 %   Created：
@@ -72,10 +72,10 @@
 \newcommand\figcaption{\def\@captype{figure}\caption} \newcommand\tabcaption{\def\@captype{table}\caption}
 
 %提供表格环境下p{width}加强版命令，使用L{width}等可以在指定宽度的同时指定对齐方式。
-\newcommand{\PreserveBackslash}[1]{\let\temp=\\#1\let\\=\temp} 
-\newcolumntype{C}[1]{>{\PreserveBackslash\centering}p{#1}} 
-\newcolumntype{R}[1]{>{\PreserveBackslash\raggedleft}p{#1}} 
-\newcolumntype{L}[1]{>{\PreserveBackslash\raggedright}p{#1}} 
+\newcommand{\PreserveBackslash}[1]{\let\temp=\\#1\let\\=\temp}
+\newcolumntype{C}[1]{>{\PreserveBackslash\centering}p{#1}}
+\newcolumntype{R}[1]{>{\PreserveBackslash\raggedleft}p{#1}}
+\newcolumntype{L}[1]{>{\PreserveBackslash\raggedright}p{#1}}
 
 %Superscript reference
 \newcommand{\scite}[1]{\textsuperscript{\cite{#1}}}
@@ -114,7 +114,7 @@
 \def\assumptionautorefname{假设}
 \def\propertyautorefname{性质}%
 
-%Titlepage %USTC style 
+%Titlepage %USTC style
 \newcommand*{\titletail}[1]{\gdef\@titletail{#1}}
 \newcommand*{\tutor}[1]{\gdef\@tutor{#1}}
 \newcommand*{\entitle}[1]{\gdef\@entitle{#1}}
@@ -140,7 +140,7 @@
   \begin{center}%
   \let \footnote \thanks
      {\Huge \textit{安徽大学}\\
-     \Large \textrm{Anhui University}\\	     
+     \Large \textrm{Anhui University}\\	
      \Huge \textit{本科毕业论文}\\ \Large\textrm{A Dissertation for the Bachelor's Degree} \par}%
     \vskip 1.5cm
     \sihao\@title\ifx\@titletail\@empty\else\@titletail\fi
@@ -222,8 +222,8 @@
   \end{center}
   \newpage\renewcommand\arraystretch{1.0}
   }
-  
-%coverpage  
+
+%coverpage
 \newcommand\makecover{
     \thispagestyle{empty}
     \newgeometry{top=17.4cm,bottom=1.1cm,left=6cm,right=5.5cm}
@@ -319,7 +319,7 @@
   includeheadfoot,
   top=2.5cm, bottom=2.0cm,
   headsep=0.6cm,
-  headheight=0.6cm, 
+  headheight=0.6cm,
   footnotesep=0.8cm,
   footskip=1cm,
   textheight=22.5cm,
@@ -334,7 +334,7 @@
 \setlength{\parskip}{0pt}
 \setlength{\baselineskip}{20pt}
 \setlength{\headsep}{1 cm}
-\setlength{\textwidth}{16.5true cm} 
+\setlength{\textwidth}{16.5true cm}
 \setlength{\belowcaptionskip}{0pt}
 %\setlength{\abovecaptionskip}{0pt}
 
@@ -435,22 +435,22 @@
 \fancyfoot[C]{\thepage}
 \let\ps@plain\ps@fancy
 
-%theorems 
-\newtheorem{theorem}{\textbf{\hspace{0.7pt}定理}}[section] 
-\newtheorem{lemma}{\textbf{\hspace{0.7pt}引理}}[section] 
-\newtheorem{example}{\textbf{\hspace{0.7pt}例}}[section]             
-\newtheorem{algorithm}{\textbf{\hspace{0.7pt}算法}}[section] 
-\newtheorem{definition}{\textbf{\hspace{0.7pt}定义}}[section] 
-\newtheorem{axiom}{\textbf{\hspace{0.7pt}公理}}[section] 
-\newtheorem{property}{\textbf{\hspace{0.7pt}性质}}[section] 
-\newtheorem{proposition}{\textbf{\hspace{0.7pt}命题}}[section] 
-\newtheorem{corollary}{\textbf{\hspace{0.7pt}推论}}[section] 
-\newtheorem{remark}{\textbf{\hspace{0.7pt}注解}}[section] 
-\newtheorem{condition}{\textbf{\hspace{0.7pt}条件}}[section] 
-\newtheorem{conclusion}{\textbf{\hspace{0.7pt}结论}}[section] 
-\newtheorem{assumption}{\textbf{\hspace{0.7pt}假设}}[section] 
+%theorems
+\newtheorem{theorem}{\textbf{\hspace{0.7pt}定理}}[section]
+\newtheorem{lemma}{\textbf{\hspace{0.7pt}引理}}[section]
+\newtheorem{example}{\textbf{\hspace{0.7pt}例}}[section]
+\newtheorem{algorithm}{\textbf{\hspace{0.7pt}算法}}[section]
+\newtheorem{definition}{\textbf{\hspace{0.7pt}定义}}[section]
+\newtheorem{axiom}{\textbf{\hspace{0.7pt}公理}}[section]
+\newtheorem{property}{\textbf{\hspace{0.7pt}性质}}[section]
+\newtheorem{proposition}{\textbf{\hspace{0.7pt}命题}}[section]
+\newtheorem{corollary}{\textbf{\hspace{0.7pt}推论}}[section]
+\newtheorem{remark}{\textbf{\hspace{0.7pt}注解}}[section]
+\newtheorem{condition}{\textbf{\hspace{0.7pt}条件}}[section]
+\newtheorem{conclusion}{\textbf{\hspace{0.7pt}结论}}[section]
+\newtheorem{assumption}{\textbf{\hspace{0.7pt}假设}}[section]
 \newtheorem{prove}{\textbf{\hspace{0.7pt}证明}}[section]
-\renewcommand\appendixname{附录} 
+\renewcommand\appendixname{附录}
 \renewcommand{\proofname}{证明}
 
 %upStand Greek Letters
@@ -490,11 +490,13 @@
     }
 
 %Special Pages
+\ctexset{
+abstractname = {Abstract},%设置英文摘要
+}
 \newcommand*{\keywords}[1]{\gdef\@keywords{#1}}
 \newcommand*{\cnkeywords}[1]{\gdef\@cnkeywords{#1}}
 \global\let\@keywords\@empty
 \global\let\@cnkeywords\@empty
-%\newcommand{\abstractname}{Abstract}
 \newcommand{\cnabstractname}{摘$\quad$要}
 \newcommand{\thankspagename}{致$\quad$谢}
   \newenvironment{abstract}{%
@@ -519,15 +521,15 @@
         \end{center}%
 	\fontspec{Times New Roman}\wuhao\quotation
       \fi}
-      {\if@twocolumn\else\endquotation 
+      {\if@twocolumn\else\endquotation
         \vskip 16pt
 	{\fontspec{Times New Roman}\bfseries\xiaosihao{$\qquad$Keywords:$\quad$\@keywords}}
 	\setlength{\baselineskip}{20pt}
 	\fi}
 
-      
+
   \newenvironment{cnabstract}{%
-  %\newpage  
+  %\newpage
       \if@twocolumn
         \section*{\cnabstractname}%
       \else
@@ -538,7 +540,7 @@
 	\begin{center}%
 		\vskip 4.5cm
 		\heiti\sanhao\textbf{$\qquad$\@title\ifx\@titletail\@empty\else\@titletail\fi$\qquad$}\\
-	\vskip 20pt	  
+	\vskip 20pt	
           \phantomsection
 	  \setlength{\baselineskip}{16pt}
           %{\bfseries\sihao \cnabstractname\vspace{.5em}\vspace{\z@}}%
@@ -551,7 +553,7 @@
       \xiaosihao\songti\textbf{$\qquad$关键字:$\quad$\@cnkeywords}
       \setlength{\baselineskip}{20pt}
       \fi}
-      
+
   \newenvironment{thankspage}{%
   \newpage
       \if@twocolumn
@@ -566,12 +568,12 @@
 	  \setlength{\baselineskip}{20pt}
 	  \vskip 4.5cm
 	  %{\bfseries\xiaoerhao \thankspagename\vspace{-.5em}\vspace{\z@}}%
-	  {\bfseries\sihao\heiti \thankspagename}%      
+	  {\bfseries\sihao\heiti \thankspagename}%
 	\end{center}%
         \xiaosihao\songti\quotation
       \fi}
       {\if@twocolumn\else\endquotation\cleardoublepage\fi}
-      
+
 
 %Pdfinfo Setup
 \renewcommand\@pdfauthor{\@author}

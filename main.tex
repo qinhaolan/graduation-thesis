@@ -10,77 +10,77 @@
 \usepackage{metalogo}
 \usepackage{verbatim}
 \usepackage{titlesec}
-
+\usepackage{unicode-math}
+\renewcommand\thesection{\arabic {section}}
 % 设置图形文件的搜索路径
 \graphicspath{{chapter/}{figures/}}
 \begin{document}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% 封面部分
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  % 封面内容
-  % 当中文标题过长时可以将多余的标题放在\titletail{}中
-  \title{模糊最大熵模型及其应用}
-  \entitle{Fuzzy Maximum Entropy Model and Its Application}
-  %全角空格可以正常输出
-  \author{覃浩蓝}
-  \enauthor{Qin Hao Lan }
-  \department{数学科学学院}
-  \No{A01714003}
-  \tutor{吴 涛}
-  \entutor{Prof. Wu Tao}
-  \cntime{二〇二一年　四月}
-  \entime{May,2021}
-  \major{信息与计算科学}
-  \enrolltime{二〇一七年　九月}
-  \tutordegree{教授}
-  \tutordepartment{数学科学学院}
+% 封面内容
+% 当中文标题过长时可以将多余的标题放在\titletail{}中
+\title{模糊最大熵模型及其应用}
+\entitle{Fuzzy Maximum Entropy Model and Its Application}
+%全角空格可以正常输出
+\author{覃浩蓝}
+\enauthor{Qin Hao Lan }
+\department{数学科学学院}
+\No{A01714003}
+\tutor{吴 涛}
+\entutor{Prof. Wu Tao}
+\cntime{二〇二一年　四月}
+\entime{May,2021}
+\major{信息与计算科学}
+\enrolltime{二〇一七年　九月}
+\tutordegree{教授}
+\tutordepartment{数学科学学院}
 
-  % 生成USTC格式的中英文合并的扉页，AHU可以使用
-  \maketitle
+% 生成USTC格式的中英文合并的扉页，AHU可以使用
+\maketitle
 
-  %生成安徽大学格式的扉页
-  \makeahutitle
+%生成安徽大学格式的扉页
+\makeahutitle
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% 前言部分
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%RN1%%%%%%%%%%
 \frontmatter
 
-  % 题目、摘要、关键词
-  \include{chapter/abstract}
-  % 目录
-  \tableofcontents
+% 题目、摘要、关键词
+\include{chapter/abstract}
+% 目录
+\tableofcontents
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% 正文部分
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\mainmatterchap
+\mainmatter
 \include{chapter/chap1-introduction}
-  \include{chapter/chap2-fuzzyMath}
-  \include{chapter/chap3-maxEtropy}
-   \include{chapter/chap4-modelApplication}
-   \include{chapter/chap5-summarize}
-   \include{chapter/chap6-thanks}
+\include{chapter/chap2-fuzzyMath}
+\include{chapter/chap3-maxEtropy}
+\include{chapter/chap4-modelApplication}
+\include{chapter/chap5-summarize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% 附件部分
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\backmatter
 
-  % 参考文献
-  % 使用 BibTeX
-  \phantomsection
-  \addcontentsline{toc}{chapter}{参考文献}
-  \bibliography{bib/ahu}
-  \nocite{*} % for every item
+% 参考文献
+% 使用 BibTeX
+\phantomsection
+\addcontentsline{toc}{chapter}{参考文献}
+\bibliography{bib/ahu}
+\nocite{*} % for every item
 
 
-  % 附录
-  \begin{appendix}
-    %\include{chapter/chap-app}
-  \end{appendix}
+% 附录
+\begin{appendix}
+	%\include{chapter/chap-app}
+\end{appendix}
 
-  % 致谢
-  \include{chapter/thanks}
+% 致谢
+\include{chapter/chap6-thanks}
 
 \end{document}
