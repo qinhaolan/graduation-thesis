@@ -6,14 +6,15 @@
 % 若要双面且章节从奇数页开始，
 % 请改为twoside, opentight；
 \documentclass[capnocolon,titleahuscience,oneside,openany]{ahuthesis}
-
 \usepackage{metalogo}
 \usepackage{verbatim}
 \usepackage{titlesec}
 \usepackage{unicode-math}
-\renewcommand\thesection{\arabic {section}}
+%\renewcommand\thesection{\arabic {section}}
 % 设置图形文件的搜索路径
 \graphicspath{{chapter/}{figures/}}
+%参考文献设置
+%\bibliographystyle{gbt7714-numerical}% 顺序编码制
 \begin{document}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% 封面部分
@@ -37,7 +38,7 @@
 \tutordepartment{数学科学学院}
 
 % 生成USTC格式的中英文合并的扉页，AHU可以使用
-\maketitle
+%\maketitle
 
 %生成安徽大学格式的扉页
 \makeahutitle
@@ -73,7 +74,6 @@
 \addcontentsline{toc}{chapter}{参考文献}
 \bibliography{bib/ahu}
 \nocite{*} % for every item
-
 
 % 附录
 \begin{appendix}
