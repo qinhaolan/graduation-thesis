@@ -67,10 +67,10 @@
     则称$\tilde{C}$为$\tilde{A}$与$\tilde{B}(u)$的交，记为$\tilde{C}=\tilde{A} \cap \tilde{B}$。\\
     它们的隶属度函数定义为：
     \[
-        (\tilde{A}\cup  \tilde{B})(u) \stackrel{\text { def }}{=}\tilde{A}(u) \vee \tilde{B}(u) ， \forall u \in \mathrm{U}
+        (\tilde{A}\cup  \tilde{B})(u) \stackrel{\mathrm{def} }{=}\tilde{A}(u) \vee \tilde{B}(u) ， \forall u \in \mathrm{U}
     \]
     \[
-        (\tilde{A}\cap   \tilde{B})(u) \stackrel{\text { def }}{=}\tilde{A}(u) \wedge \tilde{B}(u) ，\forall u \in \mathrm{U}
+        (\tilde{A}\cap  \tilde{B})(u) \stackrel{\mathrm{def} }{=}\tilde{A}(u) \wedge \tilde{B}(u) ，\forall u \in \mathrm{U}
     \]
 \end{definition}
 \begin{definition}
@@ -78,3 +78,18 @@
     则称$\tilde{B}$为$\tilde{A}$的余，记为$\tilde{B}=\tilde{A}^c$。
 \end{definition}
 \section{模糊集的截集}
+模糊集可以很好地描述模糊概念，但是在客观现实里，我们需要在最后把模糊集变成我们需要的各种集合，从而得出确定的结论，于是我们引入了$\lambda$-截集的概念。
+\begin{definition}
+    设$\tilde{A}\in \mathscr{F}(U)$，对于$\forall \lambda \in [0,1]$，记
+    \[
+        (\tilde{A})_{\lambda}=A_{\lambda} \stackrel{\mathrm{def}}{=}\{u \mid \tilde{A}(u) \geqslant \lambda\}
+    \]
+\end{definition}
+$\lambda$-截集本质上是一个普通集合，是通过对$\tilde{A}$进行截取得出的集合。
+转化为特征函数即为
+\[
+    A_{\lambda}(u)=\left\{\begin{array}{ll}
+        1, & A(u) \geqslant \lambda \\
+        0, & A(u)<\lambda
+    \end{array}\right.
+\]

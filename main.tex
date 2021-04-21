@@ -7,15 +7,28 @@
 % 请改为twoside, opentight；
 \documentclass[capnocolon,titleahuscience,oneside,openany]{ahuthesis}
 \usepackage{metalogo}
-\usepackage{lmodern}
 \usepackage{verbatim}
 \usepackage{titlesec}
 \usepackage{unicode-math}
 %\renewcommand\thesection{\arabic {section}}
 % 设置图形文件的搜索路径
 \graphicspath{{chapter/}{figures/}}
-%参考文献设置
-%\bibliographystyle{gbt7714-numerical}% 顺序编码制
+%=================设置章节标题格式==================
+\ctexset{
+	section={
+		%format用于设置章节标题全局格式，作用域为标题和编号
+		%字号为小三，字体为黑体，左对齐
+		%+号表示在原有格式下附加格式命令
+		format+ =\heiti
+	},
+	subsection={
+		%format用于设置章节标题全局格式，作用域为标题和编号
+		%字号为小三，字体为黑体，左对齐
+		%+号表示在原有格式下附加格式命令
+		format+ =\heiti
+	},
+}
+
 \begin{document}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% 封面部分
