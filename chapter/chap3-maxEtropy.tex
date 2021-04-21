@@ -1,6 +1,18 @@
-\chapter[最大熵模型]{最大熵模型}
-\section{模糊熵\cite{li2008entropy}}
-模糊熵
+\chapter[模糊最大熵模型]{模糊最大熵模型}
 \section{最大熵原理}
+ 熵原本是物理学中的概念，是由热力学第二定律引出的一个物质系统的状态参量。
+\section{模糊熵}
+自从模糊理论提出
+\begin{definition}[模糊熵\cite{li2008entropy}]
+    对于离散的模糊变量
+    \[
+        H(\tilde{A})=-\sum_{i=1}^{n}\left(\tilde{A}(u_i) \ln \tilde{A}(u_i)+\left(1-\tilde{A}(u_i)\right) \ln \left(1-\tilde{A}(u_i)\right)\right)
+    \]
+    对于连续的模糊变量
+    \[
+        H(\tilde{A})=-\int_{-\infty}^{\infty}(\tilde{A}(u) \ln \tilde{A}(u)+(1-\tilde{A}(u)) \ln (1-\tilde{A}(u))) d u
+    \]
+\end{definition}
+
 
 \section{模糊最大熵模型}
