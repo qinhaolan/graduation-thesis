@@ -282,8 +282,8 @@
     \thispagestyle{empty}
     \null
     \begin{center}%
-        {\xiaochuhao\songti\textbf{安徽大学}\\\vskip 1cm
-            \xiaochuhao\songti\textbf{本科毕业论文}\\ \par}%
+        {\xiaochuhao\songti\heiti{安徽大学}\\\vskip 1cm
+            \xiaochuhao\songti\heiti{本科毕业论文}\\ \par}%
         \vskip 5cm
         \ifx\@titletail\@empty\vskip 1cm\else\fi
         {\large
@@ -291,20 +291,20 @@
                 {
                     \renewcommand\arraystretch{1.2}
                     \begin{tabular}[t]{llrr}%
-                        \songti\textbf{题$\quad$目：}
+                        \songti\heiti{题$\quad$目：}
                                                    & \multicolumn{3}{l}{\underline{\makebox[10cm][c]{\@title}}}\tabularnewline
                         \ifx\@titletail\@empty\else
                                                    & \multicolumn{3}{l}{\underline{\makebox[10cm][c]{\@titletail}}}\tabularnewline
                         \fi
-                        \songti\textbf{学生姓名：} & \underline{\makebox[3.5cm][c]{\@author}}
-                                                   & \songti\textbf{学号：}                                                              & \underline{\makebox[3cm][c]{\@No}}\tabularnewline
-                        \songti\textbf{院（系）：} & \underline{\makebox[3.5cm][c]{\@department}}
-                                                   & \songti\textbf{专业：}                                                              & \underline{\makebox[3cm][c]{\@major}}\tabularnewline
-                        \songti\textbf{入学时间：} & \multicolumn{3}{l}{\underline{\makebox[10cm][c]{\@enrolltime}}}\tabularnewline
-                        \songti\textbf{导师姓名：} & \underline{\makebox[3.5cm][c]{\@tutor}}
-                                                   & \songti\textbf{职称/学位：}                                                         & \underline{\makebox[3cm][c]{\@tutordegree}}\tabularnewline
-                        \songti\textbf{导师单位：} & \multicolumn{3}{l}{\underline{\makebox[10cm][c]{\@tutordepartment}}}\tabularnewline
-                        \songti\textbf{完成时间：} & \multicolumn{3}{l}{\underline{\makebox[10cm][c]{\@cntime}}}\tabularnewline
+                        \songti\heiti{学生姓名：} & \underline{\makebox[3.5cm][c]{\@author}}
+                                                   & \songti\heiti{学号：}                                                              & \underline{\makebox[3cm][c]{\@No}}\tabularnewline
+                        \songti\heiti{院（系）：} & \underline{\makebox[3.5cm][c]{\@department}}
+                                                   & \songti\heiti{专业：}                                                              & \underline{\makebox[3cm][c]{\@major}}\tabularnewline
+                        \songti\heiti{入学时间：} & \multicolumn{3}{l}{\underline{\makebox[10cm][c]{\@enrolltime}}}\tabularnewline
+                        \songti\heiti{导师姓名：} & \underline{\makebox[3.5cm][c]{\@tutor}}
+                                                   & \songti\heiti{职称/学位：}                                                         & \underline{\makebox[3cm][c]{\@tutordegree}}\tabularnewline
+                        \songti\heiti{导师单位：} & \multicolumn{3}{l}{\underline{\makebox[10cm][c]{\@tutordepartment}}}\tabularnewline
+                        \songti\heiti{完成时间：} & \multicolumn{3}{l}{\underline{\makebox[10cm][c]{\@cntime}}}\tabularnewline
                     \end{tabular}}\par}%
     \end{center}
     \newpage\renewcommand\arraystretch{1.0}
@@ -421,20 +421,20 @@
 \let\ps@plain\ps@fancy
 
 %theorems
-\newtheorem{theorem}{\textbf{\hspace{0.7pt}定理}}[section]
-\newtheorem{lemma}{\textbf{\hspace{0.7pt}引理}}[section]
-\newtheorem{example}{\textbf{\hspace{0.7pt}例}}[section]
-\newtheorem{algorithm}{\textbf{\hspace{0.7pt}算法}}[section]
-\newtheorem{definition}{\textbf{\hspace{0.7pt}定义}}[section]
-\newtheorem{axiom}{\textbf{\hspace{0.7pt}公理}}[section]
-\newtheorem{property}{\textbf{\hspace{0.7pt}性质}}[section]
-\newtheorem{proposition}{\textbf{\hspace{0.7pt}命题}}[section]
-\newtheorem{corollary}{\textbf{\hspace{0.7pt}推论}}[section]
-\newtheorem{remark}{\textbf{\hspace{0.7pt}注解}}[section]
-\newtheorem{condition}{\textbf{\hspace{0.7pt}条件}}[section]
-\newtheorem{conclusion}{\textbf{\hspace{0.7pt}结论}}[section]
-\newtheorem{assumption}{\textbf{\hspace{0.7pt}假设}}[section]
-\newtheorem{prove}{\textbf{\hspace{0.7pt}证明}}[section]
+\newtheorem{theorem}{\heiti{\hspace{0.7pt}定理}}[section]
+\newtheorem{lemma}{\heiti{\hspace{0.7pt}引理}}[section]
+\newtheorem{example}{\heiti{\hspace{0.7pt}例}}[section]
+\newtheorem{algorithm}{\heiti{\hspace{0.7pt}算法}}[section]
+\newtheorem{definition}{\heiti{\hspace{0.7pt}定义}}[section]
+\newtheorem{axiom}{\heiti{\hspace{0.7pt}公理}}[section]
+\newtheorem{property}{\heiti{\hspace{0.7pt}性质}}[section]
+\newtheorem{proposition}{\heiti{\hspace{0.7pt}命题}}[section]
+\newtheorem{corollary}{\heiti{\hspace{0.7pt}推论}}[section]
+\newtheorem{remark}{\heiti{\hspace{0.7pt}注解}}[section]
+\newtheorem{condition}{\heiti{\hspace{0.7pt}条件}}[section]
+\newtheorem{conclusion}{\heiti{\hspace{0.7pt}结论}}[section]
+\newtheorem{assumption}{\heiti{\hspace{0.7pt}假设}}[section]
+\newtheorem{prove}{\heiti{\hspace{0.7pt}证明}}[section]
 \renewcommand\appendixname{附录}
 \renewcommand{\proofname}{证明}
 
@@ -532,7 +532,7 @@
     \fi}
 {\if@twocolumn\else\endquotation
         \vskip 16pt
-        \xiaosihao\songti\textbf{$\qquad$关键字:$\quad$\@cnkeywords}
+        \xiaosihao\songti\heiti{$\qquad$关键字:$\quad$\@cnkeywords}
         \setlength{\baselineskip}{20pt}
     \fi}
 
