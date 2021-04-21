@@ -341,7 +341,10 @@
 %\renewcommand{\thesubsubsection}{\arabic{subsubsection}.}
 
 
-\CTEXoptions[listfigurename={插图索引}]\CTEXoptions[listtablename={表格索引}]
+\CTEXoptions[listfigurename={插图索引}]
+\CTEXoptions[listtablename={表格索引}]
+
+
 
 \ifustc@TitleChinese \CTEXsetup[format={{\centering\sanhao\bfseries}}]{chapter}
     \CTEXsetup[format={{\center\bfseries\xiaosanhao}}]{section}
@@ -368,14 +371,17 @@
     \CTEXsetup[format={{\songti\xiaosihao}}]{subsection}
     \CTEXsetup[format={{\songti\xiaosihao}}]{subsubsection}
     \CTEXsetup[format={{\songti\xiaosihao}}]{paragraph}
-    \CTEXsetup[beforeskip={0.1pt}]{chapter} \CTEXsetup[beforeskip={0.1pt}]{section}
+    \CTEXsetup[beforeskip={0.1pt}]{chapter} 
+    \CTEXsetup[beforeskip={0.1pt}]{section}
     \CTEXsetup[beforeskip={0.1pt}]{subsection}
     \CTEXsetup[beforeskip={0.1pt}]{subsubsection}
-    \CTEXsetup[beforeskip={0.1pt}]{paragraph} \CTEXsetup[afterskip={1pt}]{chapter}
+    \CTEXsetup[beforeskip={0.1pt}]{paragraph} 
+    \CTEXsetup[afterskip={1pt}]{chapter}
     \CTEXsetup[afterskip={0.01pt}]{section}
     \CTEXsetup[afterskip={0.01pt}]{subsection}
     \CTEXsetup[afterskip={0.01pt}]{subsubsection}
-    \CTEXsetup[afterskip={0.01pt}]{paragraph} \CTEXsetup[indent={2\ccwd}]{section}
+    \CTEXsetup[afterskip={0.01pt}]{paragraph} 
+    \CTEXsetup[indent={2\ccwd}]{section}
     \CTEXsetup[indent={2\ccwd}]{subsection}
     \CTEXsetup[indent={2\ccwd}]{subsubsection}
     \CTEXsetup[indent={2\ccwd}]{paragraph}
@@ -399,10 +405,12 @@
     \CTEXsetup[format={{\songti\xiaosihao}}]{subsection}
     \CTEXsetup[format={{\songti\xiaosihao}}]{subsubsection}
     \CTEXsetup[format={{\songti\xiaosihao}}]{paragraph}
-    \CTEXsetup[beforeskip={0.1pt}]{chapter} \CTEXsetup[beforeskip={0.1pt}]{section}
+    \CTEXsetup[beforeskip={0.1pt}]{chapter} 
+    \CTEXsetup[beforeskip={0.1pt}]{section}
     \CTEXsetup[beforeskip={0.1pt}]{subsection}
     \CTEXsetup[beforeskip={0.1pt}]{subsubsection}
-    \CTEXsetup[afterskip={0.1pt}]{chapter} \CTEXsetup[afterskip={0.1pt}]{section}
+    \CTEXsetup[afterskip={0.1pt}]{chapter} 
+    \CTEXsetup[afterskip={0.1pt}]{section}
     \CTEXsetup[afterskip={0.1pt}]{subsection}
     \CTEXsetup[afterskip={0.1pt}]{subsubsection}
     \CTEXsetup[number={\arabic{chapter}}]{chapter}

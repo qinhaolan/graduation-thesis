@@ -1,7 +1,5 @@
 %TEX root=../main.tex
 \chapter[模糊数学理论]{模糊数学理论}
-\section{模糊集及其表示方法}
-\subsection{模糊集的定义}
 \par
 在经典集合理论里面，一个集合就是某一个概念的内涵。
 对于论域上的一个对象，它要么属于这个集合，要么不属于这个集合，两者只能选一个，不能两者兼之，也不能有模棱两可的情况。
@@ -10,8 +8,10 @@
 越靠近1，说明该对象属于集合的程度越大，反之，越靠近0就越小。
 %概括地说，模糊数学就是将现实世界的模糊概念抽象出来作为研究对象，然后用精确的数学方法探寻其中的数量规律的一门数学分支。
 这样我们就把经典集合扩充到带有模糊边界的模糊集了，从而我们可以用这样的集合表示模糊概念。
+\section{模糊集及其表示方法}
+\subsection{模糊集的定义}
 \begin{definition}[模糊子集\scite{ZADEH1965fuzzy}]
-    设$\mathrm{U}$为自论域，
+    设$\mathrm{U}$为我们所研究的论域，
     \[
         \mu_{\tilde{A}}: \mathrm{U} \longrightarrow[0,1]
     \]
@@ -21,3 +21,60 @@
     通常，我们也把模糊子集简称为模糊集。
 \end{definition}
 \subsection{模糊集的表示方法}
+设有限集$\mathrm{U}=\{u_1,u_2,\dots ,u_n\}$，则有限集可以用如下几种方法表示\cite{模糊数学李安贵}。
+\begin{itemize}
+    \item Zadeh表示法
+          \[
+              \tilde{A}=\frac{\tilde{A}(u_1)}{u_1}+\frac{\tilde{A}(u_2)}{u_2}+ \dots +\frac{\tilde{A}(u_n)}{u_n}.
+          \]
+          虽然我们以分式和的方式表示，但是其中的$\tilde{A}(u_i)/u_i$并不表示分数，“+”也不表示和。
+          $\tilde{A}(u_i)/u_i$表示的是元素$u_i$与对$\tilde{A}$的隶属度的一一对应关系；“+”表示的是$\tilde{A}$在论域$\mathrm{U}$上的整体。
+    \item 序偶表示法
+          \[
+              \tilde{A}=\{(\tilde{A}(u_1),u_1),(\tilde{A}(u_2),u_2),\dots ,(\tilde{A}(u_n),u_n)\}.
+          \]
+          序偶表示法是从例举法演变而来，由元素的隶属度和对应的元素组成的有序对列出。
+    \item 向量表示法
+          \[
+              \tilde{A}=(\tilde{A}(u_1),\tilde{A}(u_2),\dots ,\tilde{A}(u_n)).
+          \]
+          向量表示法是用n维数组来实现的，在论域中的元素按一定的顺序排列时，按此顺序记录元素的隶属度。
+          此时也称$\tilde{A}$为模糊向量。
+\end{itemize}
+\section{模糊集的运算及其性质}
+我们先给出模糊幂集的定义：
+\begin{definition}
+    论域$\mathrm{U}$上的模糊子集的全体称为模糊幂集，记为$\mathscr{F}(U)$，即
+    \[
+        \mathscr{F}(U)=\{\tilde{A} \mid \tilde{A}(u):\mathrm{U} \to [0,1]\}
+    \]
+\end{definition}
+模糊集的包含与相等：
+\begin{definition}
+    设$\tilde{A}, \tilde{B} \in \mathscr{F}(U)$,如果对$\forall u \in \mathrm{U}$
+    都成立$\tilde{B}(u)\geqslant \tilde{A}(u)$,则称$\tilde{B}$包含$\tilde{A}(u)$，记作$\tilde{B}(u )\supseteq \tilde{A}(u)$。
+\end{definition}
+\begin{definition}
+    设$\tilde{A}, \tilde{B} \in \mathscr{F}(U)$,如果对$\forall u \in \mathrm{U}$
+    都成立$\tilde{B}(u) = \tilde{A}(u)$,则称$\tilde{B}$等于$\tilde{A}(u)$，记作$\tilde{B}(u)= \tilde{A}(u)$。
+\end{definition}
+我们规定$a\vee b=MAX(a,b),a\wedge b=MIN(a,b)$,所以我们可以这样描述模糊集的并、交、余：
+
+\begin{definition}
+    如果对于任意一个$u \in \mathrm{U}$，有$\tilde{C}(u)=\tilde{A}(u) \vee \tilde{B}$，
+    则称$\tilde{C}$为$\tilde{A}$与$\tilde{B}(u)$的并，记为$\tilde{C}=\tilde{A} \cup \tilde{B}$。
+    如果对于任意一个$u \in \mathrm{U}$，有$\tilde{C}(u)=\tilde{A}(u) \wedge \tilde{B}$，
+    则称$\tilde{C}$为$\tilde{A}$与$\tilde{B}(u)$的交，记为$\tilde{C}=\tilde{A} \cap \tilde{B}$。\\
+    它们的隶属度函数定义为：
+    \[
+        (\tilde{A}\cup  \tilde{B})(u) \stackrel{\text { def }}{=}\tilde{A}(u) \vee \tilde{B}(u) ， \forall u \in \mathrm{U}
+    \]
+    \[
+        (\tilde{A}\cap   \tilde{B})(u) \stackrel{\text { def }}{=}\tilde{A}(u) \wedge \tilde{B}(u) ，\forall u \in \mathrm{U}
+    \]
+\end{definition}
+\begin{definition}
+    如果对于$\forall u \in \mathrm{U}$，有$\tilde{B}(u)=1-\tilde{A}(u) $，
+    则称$\tilde{B}$为$\tilde{A}$的余，记为$\tilde{B}=\tilde{A}^c$。
+\end{definition}
+\section{模糊集的截集}
