@@ -7,30 +7,41 @@
 （1）离散模糊变量的信息熵\\
 设某个离散型的随机变量 $X, \quad X$ 的分布率是 $\left\{p_{i}\right\}$, 且 $p_{i}=P\left\{X=x_{i}\right\}, 0 \leq p_{i} \leq 1$,
 $\sum_{i=1}^n \mathrm{p}_i=1, \quad(i=1,2 ,\dots, n)$ 则用信息熵来度量事件 $X$ 的确定程度为:
-\[
+\begin{equation}
     H(X) =-\sum_{i=1}^{n} p_{i} \operatorname{\ln p}_{i}
-\]
+\end{equation}
 （2）连续连续模糊变量的信息熵\\
 假设某个连续型随机变量 $X$ ，其概率密度函数是 $p(x)$, 则该连续随机变量 $X$ 的信
 息熵为:
-\[
+\begin{equation}
     H(X)=-\int p(x) \ln p(x) d x
-\]
+\end{equation}
+
 \subsection{最大熵}
-1957年，E.T.Jaynes提出了最大熵原理，
+1957年，E.T.Jaynes提出了最大熵原理，通过把随机变量与信息熵联系起来，然后最大化信息熵。
+最大熵原理并不是某一固定的数学公式，而是一种选择随机变量的准则。
+最大熵的主要思想是，在我们只掌握未知变量的部分知识的时候，未知变量的分布可能有很多种，此时我们应该选符合这些知识的情况下，使得信息熵取得最大值的概率分布。
+
 \section{模糊熵}
 自从模糊理论提出以后，很多学者就在如何用模糊熵度量信息的模糊程度这一方面进行了许多研究，
-比如Li, Pingke 和Liu, Baoding\cite{li2008entropy}、
-\begin{definition}[模糊熵\cite{li2008entropy}]
+比如Li, Pingke 和Liu, Baoding\cite{li2008entropy}、Aldo de Luca 和 Settimo Termini\cite{RN3}等。
+\begin{definition}[模糊熵]
     对于离散的模糊变量
-    \[
+    \begin{equation}
         H(\tilde{A})=-\sum_{i=1}^{n}\left(\tilde{A}(u_i) \ln \tilde{A}(u_i)+\left(1-\tilde{A}(u_i)\right) \ln \left(1-\tilde{A}(u_i)\right)\right)
-    \]
+    \end{equation}
+
     对于连续的模糊变量
-    \[
+    \begin{equation}
         H(\tilde{A})=-\int_{-\infty}^{\infty}(\tilde{A}(u) \ln \tilde{A}(u)+(1-\tilde{A}(u)) \ln (1-\tilde{A}(u))) d u
-    \]
+    \end{equation}
+
 \end{definition}
 
-
-\section{模糊最大熵}
+\newpage
+\section{模糊最大熵算法}
+定义了模糊熵之后，我们就可以将最大熵原理推广到模糊熵的情形。这里我们只考虑离散情形。\\
+设$\mu_i$为第$i$个元素对应的隶属度，则我们的目标函数可以表示成
+\[
+    \max \biggl\{-\sum_{i=1}^{n}\left(\mu_i \ln \mu_i+\left(1-\mu_i\right) \ln \left(1-\mu_i\right)\right)\biggr\}
+\]
