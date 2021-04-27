@@ -1,5 +1,5 @@
-%模糊最大熵模型
-function [A,V] = FME(data, c)
+%模糊最大熵聚类
+function [A,V] = MFEC(data, c)
 % fuzzy c-means algorithm
 % 输入： data： 待聚类数据，n行s列，n为数据个数，s为每个数据的特征数
 %        c  ：  聚类中心个数
@@ -8,9 +8,11 @@ function [A,V] = FME(data, c)
 
 T = 100;        %#ok<*NASGU> %迭代次数为100
 epsm = 1.0e-6;  %收敛精度
-m = 2;          %模糊系数值为2
-F=@(x)x.*log(x)+(1-x).*log(1-x);
-dF=@(x)log(x)-log(1-x);
+%m = 2;          %模糊系数值为2
+% F=@(x)x.*log(x)+(1-x).*log(1-x);
+% dF=@(x)log(x)-log(1-x);
+F=@(x)x.*log(x);
+dF=@(x)log(x)-1;
 [n, s] = size(data);
 % 初始化隶属度矩阵并归一化
 A= rand(c, n);
@@ -23,14 +25,14 @@ L=zeros(c,n);
 t=0;
 while(ture)
     t=t+1;
-    %更新聚类中心
-    A=F(A);
-    V=A*data./(sum(A ,2)*ones(1,s));
+    A=F(A);%计算模糊熵
+    V=A*data./(sum(A ,2)*ones(1,s));%更新聚类中心
+    %计算第i个样本与第k类的距离
     for i=1:n
         for k=1:c
-            %计算第i个样本与第k类的距离
             L(k,i)=U0(k,i)*mydist(data(i,:),V(k,:));
         end
     end
+    
 end
 end
