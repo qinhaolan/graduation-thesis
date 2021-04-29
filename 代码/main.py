@@ -122,11 +122,20 @@ def normalise_U(U):
 
 
 # m的最佳取值范围为[1.5，2.5]
-def fuzzy(data, cluster_number, m):
+def fuzzy(data, cluster_number):
     """
     这是主函数，它将计算所需的聚类中心，并返回最终的归一化隶属矩阵U.
     参数是：簇数(cluster_number)和隶属度的因子(m)
     """
+    # 计算beta
+    beta = 0
+    for i in range(0,len(data[:,0])):
+        a = 0.0
+        for j in range(0,len(data[0])):
+            a += data[i, j]
+        a /= len(data[0])
+        beta += a;
+    beta /=len(data[:,0])
     # 初始化隶属度矩阵U
     U = initialise_U(data, cluster_number)
     # print_matrix(U)
@@ -143,9 +152,9 @@ def fuzzy(data, cluster_number, m):
                 dummy_sum_dum = 0.0
                 for k in range(0, len(data)):
                     # 分子
-                    dummy_sum_num += (U[k][j] ** m) * data[k][i]
+                    dummy_sum_num += U[k][j] * data[k][i]
                     # 分母
-                    dummy_sum_dum += (U[k][j] ** m)
+                    dummy_sum_dum += U[k][j]
                 # 第i列的聚类中心
                 current_cluster_center.append(dummy_sum_num / dummy_sum_dum)
             # 第j簇的所有聚类中心
@@ -165,8 +174,9 @@ def fuzzy(data, cluster_number, m):
                 dummy = 0.0
                 for k in range(0, cluster_number):
                     # 分母
-                    dummy += (distance_matrix[i][j] / distance_matrix[i][k]) ** (2 / (m - 1))
-                U[i][j] = 1 / dummy
+                    dummy += math.exp(distance_matrix[i][k] ** 2 / beta)
+
+                U[i][j] =  math.exp(distance_matrix[i][k] ** 2 / beta)/ dummy
 
         if end_conditon(U, U_old):
             print("结束聚类")
@@ -206,7 +216,7 @@ if __name__ == '__main__':
     # 现在我们有一个名为data的列表，它只是数字
     # 我们还有另一个名为cluster_location的列表，它给出了正确的聚类结果位置
     # 调用模糊C均值函数
-    final_location = fuzzy(data, 2, 2)
+    final_location = fuzzy(data, 2)
 
     # 还原数据
     final_location = de_randomise_data(final_location, order)

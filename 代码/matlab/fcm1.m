@@ -26,11 +26,12 @@ for i=1:n
     U0(:,i) = U0(:,i)./temp(i);
 end
 iter = 0; 
-V(c,s) = 0; U(c,n) = 0; distance(c,n) = 0;
+V(c,s) = 0; 
+U(c,n) = 0; 
+distance(c,n) = 0;
 F=@(x)x.*log(x);
 while( iter<T  )
     iter = iter + 1;
-%    U =  U0;
     % 更新V(t)
     Um = U0.^m;
     V = Um*data./(sum(Um,2)*ones(1,s));   % MATLAB矩阵相乘啊，好东西
@@ -41,8 +42,8 @@ while( iter<T  )
         end
     end
     U=1./(distance.^m.*(ones(c,1)*sum(distance.^(-m)))); 
-    %objFcn(iter) = sum(sum(Um.*distance.^2));
-    objFcn(iter) = sum(sum(F(U)));
+    objFcn(iter) = sum(sum(Um.*distance.^2));
+%     objFcn(iter) = sum(sum(F(U)));
     % FCM算法停止条件
     if norm(U-U0,Inf)<epsm  
         break
