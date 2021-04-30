@@ -5,13 +5,13 @@ clc
 iris = csvread('iris.csv');
 data=iris(:,2:6);
 %归一化
-for i=1:4
-    mi=min(iris(:,i+1));
-    ma=max(iris(:,i+1));
-    for j=1:150
-        data(j,i)=(iris(j,i+1)-mi)/(ma-mi);
-    end
-end
+% for i=1:4
+%     mi=min(iris(:,i+1));
+%     ma=max(iris(:,i+1));
+%     for j=1:150
+%         data(j,i)=(iris(j,i+1)-mi)/(ma-mi);
+%     end
+% end
 %绘制原始数据
 subplot(2,3,1);
 gscatter(data(:,1),data(:,2),data(:,5)),title('1,2 列')

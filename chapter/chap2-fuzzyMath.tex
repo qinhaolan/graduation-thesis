@@ -1,5 +1,7 @@
 %TEX root=../main.tex
-\chapter[模糊数学理论]{模糊数学理论}
+\chapter[模糊C-均值聚类]{模糊C-均值聚类}
+
+\section{模糊集及其表示方法}
 \par
 在经典集合理论里面，一个集合就是某一个概念的内涵。
 对于论域上的一个对象，它要么属于这个集合，要么不属于这个集合，两者只能选一个，不能两者兼之，也不能有模棱两可的情况。
@@ -8,7 +10,6 @@
 越靠近1，说明该对象属于集合的程度越大，反之，越靠近0就越小。
 %概括地说，模糊数学就是将现实世界的模糊概念抽象出来作为研究对象，然后用精确的数学方法探寻其中的数量规律的一门数学分支。
 这样我们就把经典集合扩充到带有模糊边界的模糊集了，从而我们可以用这样的集合表示模糊概念。
-\section{模糊集及其表示方法}
 \subsection{模糊集的定义}
 \begin{definition}[模糊子集\scite{ZADEH1965fuzzy}]
     设$\mathrm{U}$为我们所研究的论域，
@@ -41,55 +42,59 @@
           向量表示法是用n维数组来实现的，在论域中的元素按一定的顺序排列时，按此顺序记录元素的隶属度。
           此时也称$\tilde{A}$为模糊向量。
 \end{itemize}
-\section{模糊集的运算及其性质}
-我们先给出模糊幂集的定义：
-\begin{definition}
-    论域$\mathrm{U}$上的模糊子集的全体称为模糊幂集，记为$\mathscr{F}(U)$，即
-    \[
-        \mathscr{F}(U)=\{\tilde{A} \mid \tilde{A}(u):\mathrm{U} \to [0,1]\}
-    \]
-\end{definition}
-模糊集的包含与相等：
-\begin{definition}
-    设$\tilde{A}, \tilde{B} \in \mathscr{F}(U)$,如果对$\forall u \in \mathrm{U}$
-    都成立$\tilde{B}(u)\geqslant \tilde{A}(u)$,则称$\tilde{B}$包含$\tilde{A}(u)$，记作$\tilde{B}(u )\supseteq \tilde{A}(u)$。
-\end{definition}
-\begin{definition}
-    设$\tilde{A}, \tilde{B} \in \mathscr{F}(U)$,如果对$\forall u \in \mathrm{U}$
-    都成立$\tilde{B}(u) = \tilde{A}(u)$,则称$\tilde{B}$等于$\tilde{A}(u)$，记作$\tilde{B}(u)= \tilde{A}(u)$。
-\end{definition}
-我们规定$a\vee b=\max(a,b),a\wedge b=\min(a,b)$,所以我们可以这样描述模糊集的并、交、余：
+\section{模糊C-均值算法}
+C-均值聚类是我们聚类经常用的方法之一，通过迭代计算使得目标函数达到局部最小值的时候，就是我们的最优分类。
+在模糊C-均值聚类中，我们定义目标函数为：
+\begin{equation}
+    J(A, V)=\sum_{i=1}^{c} \sum_{j=1}^{n}\left(a_{i j}\right)^{r} d_{i j}
+\end{equation}
+$U=\{u_1,u_2,\dots,u_n\},u_j=(x_{j1},x_{j1},\dots,x_{jm})\in R^m$为给定的$n$个样本的$m$维数据集，
+$A=(a_{i j})$是隶属度矩阵，$r$是模糊数，$d_{i k}=\| u_k-v_i\|^2$是第个$k$个样本到第$i$个聚类中心的距离。
+\par
+当$v_i$不变时问题等价于
+\begin{equation}
+    \min L(A, \lambda)=\sum_{i=1}^{c} \sum_{j=1}^{n}\left(a_{i j}\right)^{r}d_{i k}
+\end{equation}
+\begin{equation}
+    s.t.  \sum_{i=i}^c a_{i k}=1.\  \forall k
+\end{equation}
+这是最优化问题，我们引入拉格朗日乘子$\lambda$,于是变为
+\begin{equation}
+    L(A, \lambda)=\sum_{i=1}^{c} \sum_{j=1}^{n}\left(a_{i j}\right)^{r}\left\|u_{j}-v_{i}\right\|^{2}-\sum_{j=1}^{n} \lambda_{j}\left(\sum_{i=1}^{c} a_{i j}-1\right)
+    \label{Lagrange}
+\end{equation}
+对式\ref{Lagrange}求导，局部最小值时必要条件为
+\begin{equation}
+    \frac{\partial L(A, \lambda)}{\partial a_{i j}}=\left[r\left(a_{i j}\right)^{r-1}\left\|u_{j}-v_{i}\right\|^{2}-\lambda_{j}\right]=0
+    \label{dLdAij}
+\end{equation}
+\begin{equation}
+    \frac{\partial L(A, \lambda)}{\partial \lambda_{j}}=\sum_{i=1}^{c} a_{i j}-1=0
+    \label{dLdLamda}
+\end{equation}
 
-\begin{definition}
-    如果对于任意一个$u \in \mathrm{U}$，有$\tilde{C}(u)=\tilde{A}(u) \vee \tilde{B}$，
-    则称$\tilde{C}$为$\tilde{A}$与$\tilde{B}(u)$的并，记为$\tilde{C}=\tilde{A} \cup \tilde{B}$。
-    如果对于任意一个$u \in \mathrm{U}$，有$\tilde{C}(u)=\tilde{A}(u) \wedge \tilde{B}$，
-    则称$\tilde{C}$为$\tilde{A}$与$\tilde{B}(u)$的交，记为$\tilde{C}=\tilde{A} \cap \tilde{B}$。\\
-    它们的隶属度函数定义为：
-    \[
-        (\tilde{A}\cup  \tilde{B})(u) \stackrel{\mathrm{def} }{=}\tilde{A}(u) \vee \tilde{B}(u) ， \forall u \in \mathrm{U}
-    \]
-    \[
-        (\tilde{A}\cap  \tilde{B})(u) \stackrel{\mathrm{def} }{=}\tilde{A}(u) \wedge \tilde{B}(u) ，\forall u \in \mathrm{U}
-    \]
-\end{definition}
-\begin{definition}
-    如果对于$\forall u \in \mathrm{U}$，有$\tilde{B}(u)=1-\tilde{A}(u) $，
-    则称$\tilde{B}$为$\tilde{A}$的余，记为$\tilde{B}=\tilde{A}^c$。
-\end{definition}
-\section{模糊集的截集}
-模糊集可以很好地描述模糊概念，但是在客观现实里，我们需要在最后把模糊集变成我们需要的各种集合，从而得出确定的结论，于是我们引入了$\lambda$-截集的概念。
-\begin{definition}
-    设$\tilde{A}\in \mathscr{F}(U)$，对于$\forall \lambda \in [0,1]$，记
-    \[
-        (\tilde{A})_{\lambda}=A_{\lambda} \stackrel{\mathrm{def}}{=}\{u \mid \tilde{A}(u) \geqslant \lambda\}
-    \]
-\end{definition}
-$\lambda$-截集本质上是一个普通集合，是通过对$\tilde{A}$进行截取得出的集合。
-转化为特征函数即为
-\[
-    A_{\lambda}(u)=\left\{\begin{array}{ll}
-        1, & A(u) \geqslant \lambda \\
-        0, & A(u)<\lambda
-    \end{array}\right.
-\]
+由式\ref{dLdAij}可得:
+\begin{equation}
+    a_{i j}=\left( \frac{\lambda_j}{r \|u_{j}-v_{i}\|^2} \right)^{\frac{1}{r-1}}
+    \label{daij}
+\end{equation}
+
+将式\ref{daij}带入式\ref{dLdLamda}解得:
+\begin{equation}
+    \left(\frac{\lambda_j}{r}\right)^{\frac{1}{r-1}}=\left[\sum\limits_{i=1}^c( \frac{1}{r \|u_{j}-v_{i}\|^2})^{\frac{1}{r-1}} \right]^{-1}
+    \label{lambda}
+\end{equation}
+\newpage
+最后将式\ref{lambda}代回式\ref{daij}得到隶属度的更新公式为：
+\begin{equation}
+    a_{i j}=\left[\sum\limits_{j=1}^c\left( \frac{\|u_{j}-v_{i}\|}{\|u_{j}-v_{j}\|} \right)^{\frac{2}{r-1}}\right]^{-1}
+    \label{aij}
+\end{equation}
+假设$a_{i j}$不变，原问题就变成了无约束最优化问题，必要条件为：
+\begin{equation}
+        \frac{\partial J(A, V)}{\partial v_{i}}=-\sum_{j=1}^{n} 2\left(a_{i j}\right)^{r}\left(u_{j}-v_{i}\right)=0 
+\end{equation}
+\begin{equation}
+    v_{i}=\frac{\sum\limits_{j=1}^{n}\left(a_{i j}\right)^{r} u_{j}}{\sum\limits_{j=1}^{n}\left(a_{i j}\right)^{r}}, \quad 1 \leqslant i \leqslant c
+    \label{vij}
+\end{equation}
