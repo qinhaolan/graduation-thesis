@@ -1,4 +1,4 @@
-\chapter[模糊最大熵准则的模糊聚类]{模糊最大熵准则的模糊聚类}
+\chapter[模糊最大熵准则的模糊聚类模型]{模糊最大熵准则的模糊聚类}
 \section{最大熵原理}
 熵原本是物理学中的概念，是由热力学第二定律引出的一个物质系统的状态参量，是反映系统的混乱程度，度量信息有效性的一个重要工具。
 自从熵的概念被提出来之后，很快引起了其他领域研究者的注意，熵理论得以迅速传播，渗透进各个领域。
@@ -26,22 +26,49 @@ $\sum_{i=1}^n \mathrm{p}_i=1, \quad(i=1,2 ,\dots, n)$ 则用信息熵来度量�
 自从模糊理论提出以后，很多学者就在如何用模糊熵度量信息的模糊程度这一方面进行了许多研究，
 比如Li, Pingke 和Liu, Baoding\cite{li2008entropy}、Aldo de Luca 和 Settimo Termini\cite{RN3}等。
 \begin{definition}[模糊熵]
-    对于离散的模糊变量
+    对于离散变量的模糊
     \begin{equation}
-        H(\tilde{A})=-\sum_{i=1}^{n}\left(\tilde{A}(u_i) \ln \tilde{A}(u_i)+\left(1-\tilde{A}(u_i)\right) \ln \left(1-\tilde{A}(u_i)\right)\right)
+        H(\tilde{A})=-\sum_{i=1}^{n}\tilde{A}(u_i) \ln \tilde{A}(u_i)
     \end{equation}
 
     对于连续的模糊变量
     \begin{equation}
-        H(\tilde{A})=-\int_{-\infty}^{\infty}(\tilde{A}(u) \ln \tilde{A}(u)+(1-\tilde{A}(u)) \ln (1-\tilde{A}(u))) d u
+        H(\tilde{A})=-\int_{-\infty}^{\infty}\tilde{A}(u) \ln \tilde{A}(u) d u
     \end{equation}
 
 \end{definition}
 
 \newpage
-\section{模糊最大熵算法}
-定义了模糊熵之后，我们就可以将最大熵原理推广到模糊熵的情形。\\
-设$\mu_i$为第$i$个元素对应的隶属度，则我们的目标函数可以表示成
-\[
-    \max \biggl\{-\sum_{i=1}^{n}\left(\mu_i \ln \mu_i+\left(1-\mu_i\right) \ln \left(1-\mu_i\right)\right)\biggr\}
-\]
+\section{模糊最大熵模型}
+定义了模糊熵之后，我们就可以将最大熵原理推广到模糊熵的情形。
+设$a_{i j}$为第$j$个元素对于第$i$类的隶属度，则我们的目标函数可以表示成
+\begin{equation}
+    \max \biggl\{-\sum_{j=1}^{n} \sum_{i=1}^{c} a_{i j}\ln a_{i j}\biggr\}
+    \label{MEC}
+\end{equation}
+我们首先得定义我们的损失函数，在这里，我们选取
+\begin{equation*}
+    \mathrm{L}=\sum_{i=1}^{c} \sum_{j=1}^{n}a_{i j} d_{i j}^2
+\end{equation*}
+
+作为我们的损失函数。
+于是我们可以将问题归结为最优化问题，用拉格朗日乘子法：
+\begin{equation}
+    L(A,\beta ,\lambda)=\sum_{i=1}^{c} \sum_{j=1}^{n} a_{i j} d_{i j}^2+\beta \sum_{i=1}^{c} \sum_{i=1}^{n} a_{i j} \ln a_{i j}+\sum_{j=1}^{n} \lambda_{j}\left(\sum_{i=1}^{c} a_{i j}-1\right)
+    \label{MLagrange}
+\end{equation}
+
+其中$\beta$是差异因子，由数据集的分布情况来决定，$\lambda_j$是$\sum\limits_{i=1}^{c} a_{i j}$的拉格朗日乘子。
+\begin{equation}
+    \frac{\partial L(A,\beta ,\lambda) }{\partial a_{i j}} =d_{i j}^2+\beta(\ln a_{i j}+1)+\lambda_j=0
+\end{equation}
+\begin{equation}
+    \frac{\partial L(A,\beta ,\lambda)}{\partial \lambda_j}=
+\end{equation}
+最后解得
+\begin{equation}
+    a_{i j}=\frac{ \exp(\frac{-d_{i j}^2}{\beta})}{\sum\limits_{i=1}^c\exp(\frac{-d_{i j}^2}{\beta})}
+\end{equation}
+\begin{equation}
+    v_i =\frac{\sum\limits_{j=1}^n a_{i j} x_j}{\sum\limits_{j=1}^n a_{i j}}
+\end{equation}

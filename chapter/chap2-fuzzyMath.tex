@@ -46,10 +46,10 @@
 C-均值聚类是我们聚类经常用的方法之一，通过迭代计算使得目标函数达到局部最小值的时候，就是我们的最优分类。
 在模糊C-均值聚类中，我们定义目标函数为：
 \begin{equation}
-    J(A, V)=\sum_{i=1}^{c} \sum_{j=1}^{n}\left(a_{i j}\right)^{r} d_{i j}
+    J(A, V)=\sum_{i=1}^{c} \sum_{j=1}^{n}\left(a_{i j}\right)^{r} d_{i j}^2
 \end{equation}
 $U=\{u_1,u_2,\dots,u_n\},u_j=(x_{j1},x_{j1},\dots,x_{jm})\in R^m$为给定的$n$个样本的$m$维数据集，
-$A=(a_{i j})$是隶属度矩阵，$r$是模糊数，$d_{i k}=\| u_k-v_i\|^2$是第个$k$个样本到第$i$个聚类中心的距离。
+$A=(a_{i j})$是隶属度矩阵，$r$是模糊数，$d_{i k}=\| u_k-v_i\|$是第个$k$个样本到第$i$个聚类中心的距离。
 \par
 当$v_i$不变时问题等价于
 \begin{equation}
@@ -88,12 +88,15 @@ $A=(a_{i j})$是隶属度矩阵，$r$是模糊数，$d_{i k}=\| u_k-v_i\|^2$是�
 最后将式\ref{lambda}代回式\ref{daij}得到隶属度的更新公式为：
 \begin{equation}
     a_{i j}=\left[\sum\limits_{j=1}^c\left( \frac{\|u_{j}-v_{i}\|}{\|u_{j}-v_{j}\|} \right)^{\frac{2}{r-1}}\right]^{-1}
+    \quad 1 \leqslant i \leqslant c,\quad 1 \leqslant j \leqslant n
     \label{aij}
 \end{equation}
 假设$a_{i j}$不变，原问题就变成了无约束最优化问题，必要条件为：
 \begin{equation}
         \frac{\partial J(A, V)}{\partial v_{i}}=-\sum_{j=1}^{n} 2\left(a_{i j}\right)^{r}\left(u_{j}-v_{i}\right)=0 
 \end{equation}
+
+解之得：
 \begin{equation}
     v_{i}=\frac{\sum\limits_{j=1}^{n}\left(a_{i j}\right)^{r} u_{j}}{\sum\limits_{j=1}^{n}\left(a_{i j}\right)^{r}}, \quad 1 \leqslant i \leqslant c
     \label{vij}
