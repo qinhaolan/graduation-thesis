@@ -1,7 +1,7 @@
 %模糊最大熵聚类
 function [A,V,C] = MFEC(data, c)
-T=1000;
-epsm=0.0001;
+T=100;
+epsm=0.01;
 [n, s] = size(data);
 
 % 初始化隶属度矩阵并归一化
