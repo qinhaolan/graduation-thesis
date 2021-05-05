@@ -1,5 +1,6 @@
 \chapter{iris数据集分类案例研究}
 \section{模糊最大熵模型的求解算法}
+首先我们来定义模型的输入输出
 模糊最大熵模型的聚类算法步骤如下：\\
 输入：原始数据$U$和聚类数$c$\\
 输出：隶属度矩阵$A$和聚类中心$V$
@@ -29,10 +30,21 @@
         \whline
     \end{tabular}
 \end{table}
-\begin{figure}[ht]
+\begin{figure}[!ht]
     \centering
     \includegraphics[scale=0.6]{lishudu.png}
     \caption{隶属度矩阵的值}
     \label{隶属度}
 \end{figure}
 \section{与实际值和FCM算法分类结果比较}
+\begin{table}[!ht]
+    \label{准确率比较}
+    \caption{准确率比较}
+    \centering
+    \begin{tabular}{c | c c c c}
+        \whline 算法/各类准确率 & Setosa(山鸢尾) & Versicolour(杂色鸢尾) & Virginica(维吉尼亚鸢尾) & 总样本 \\\whline
+        FCM                     & 100\%          & 76\%                  & 94\%                    & 90\%   \\
+        MFE                     & 100\%          & 86\%                  & 98\%                    & 94.7\% \\
+        \whline
+    \end{tabular}
+\end{table}
