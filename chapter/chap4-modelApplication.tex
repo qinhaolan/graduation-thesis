@@ -1,6 +1,18 @@
-\chapter{iris数据集分类案例研究}
+\chapter{于iris数据集分类应用研究}
 \section{模糊最大熵模型的求解算法}
-首先我们来定义模型的输入输出
+在描述我们的算法之前，我们首先来定义一些模型的假设：
+\[
+    \text{n个样本的m维数据集}U:U=\{u_1,u_2,\dots ,u_n\} ,u_i=\{x_1,x_2,\dots,x_m\} \forall i \\
+\]
+\[
+    \text{聚类数}c:2\leqslant c \leqslant n
+\]
+\[
+    \text{隶属度矩阵}A:n\times m\text{的矩阵}
+\]
+\[
+    \text{聚类中心}V:c\times m\text{的矩阵}
+\]
 模糊最大熵模型的聚类算法步骤如下：\\
 输入：原始数据$U$和聚类数$c$\\
 输出：隶属度矩阵$A$和聚类中心$V$
@@ -22,11 +34,11 @@
     \label{聚类中心}
     \caption{聚类中心}
     \centering
-    \begin{tabular}{c c c c}
-        \whline sepal length & sepal width & petal length & petal width \\\whline
-        5.0136               & 3.3903      & 1.5369       & 0.2781      \\
-        6.4737               & 2.9437      & 5.1910       & 1.8012      \\
-        6.0922               & 2.8186      & 4.6775       & 1.5731      \\
+    \begin{tabular}{c c c c c}
+        \whline & sepal length & sepal width & petal length & petal width \\\whline
+        $v_1$   & 5.0136       & 3.3903      & 1.5369       & 0.2781      \\
+        $v_2$   & 6.4737       & 2.9437      & 5.1910       & 1.8012      \\
+        $v_3$   & 6.0922       & 2.8186      & 4.6775       & 1.5731      \\
         \whline
     \end{tabular}
 \end{table}
@@ -36,7 +48,8 @@
     \caption{隶属度矩阵的值}
     \label{隶属度}
 \end{figure}
-\section{与实际值和FCM算法分类结果比较}
+\newpage
+\section{与FCM算法分类结果比较}
 \begin{table}[!ht]
     \label{准确率比较}
     \caption{准确率比较}
@@ -48,3 +61,4 @@
         \whline
     \end{tabular}
 \end{table}
+从数据的比较中，可以看到模糊最大熵模型相对于FCM算法对iris的数据集分类结果有着更好的表现。
