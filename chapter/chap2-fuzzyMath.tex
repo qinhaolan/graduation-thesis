@@ -46,6 +46,42 @@
           向量表示法是用n维数组来实现的，在论域中的元素按一定的顺序排列时，按此顺序记录元素的隶属度。
           此时也称$\tilde{A}$为模糊向量。
 \end{itemize}
+\section{模糊集的运算及其性质}
+我们先给出模糊幂集的定义：
+\begin{definition}
+    论域$\mathrm{U}$上的模糊子集的全体称为模糊幂集，记为$\mathscr{F}(U)$，即
+    \[
+        \mathscr{F}(U)=\{\tilde{A} \mid \tilde{A}(u):\mathrm{U} \to [0,1]\}
+    \]
+\end{definition}
+模糊集的包含与相等：
+\begin{definition}
+    设$\tilde{A}, \tilde{B} \in \mathscr{F}(U)$,如果对$\forall u \in \mathrm{U}$
+    都成立$\tilde{B}(u)\geqslant \tilde{A}(u)$,则称$\tilde{B}$包含$\tilde{A}(u)$，记作$\tilde{B}(u )\supseteq \tilde{A}(u)$。
+\end{definition}
+\begin{definition}
+    设$\tilde{A}, \tilde{B} \in \mathscr{F}(U)$,如果对$\forall u \in \mathrm{U}$
+    都成立$\tilde{B}(u) = \tilde{A}(u)$,则称$\tilde{B}$等于$\tilde{A}(u)$，记作$\tilde{B}(u)= \tilde{A}(u)$。
+\end{definition}
+我们规定$a\vee b=MAX(a,b),a\wedge b=MIN(a,b)$,所以我们可以这样描述模糊集的并、交、余：
+
+\begin{definition}
+    如果对于任意一个$u \in \mathrm{U}$，有$\tilde{C}(u)=\tilde{A}(u) \vee \tilde{B}$，
+    则称$\tilde{C}$为$\tilde{A}$与$\tilde{B}(u)$的并，记为$\tilde{C}=\tilde{A} \cup \tilde{B}$。
+    如果对于任意一个$u \in \mathrm{U}$，有$\tilde{C}(u)=\tilde{A}(u) \wedge \tilde{B}$，
+    则称$\tilde{C}$为$\tilde{A}$与$\tilde{B}(u)$的交，记为$\tilde{C}=\tilde{A} \cap \tilde{B}$。\\
+    它们的隶属度函数定义为：
+    \[
+        (\tilde{A}\cup  \tilde{B})(u) \stackrel{\text { def }}{=}\tilde{A}(u) \vee \tilde{B}(u) ， \forall u \in \mathrm{U}
+    \]
+    \[
+        (\tilde{A}\cap   \tilde{B})(u) \stackrel{\text { def }}{=}\tilde{A}(u) \wedge \tilde{B}(u) ，\forall u \in \mathrm{U}
+    \]
+\end{definition}
+\begin{definition}
+    如果对于$\forall u \in \mathrm{U}$，有$\tilde{B}(u)=1-\tilde{A}(u) $，
+    则称$\tilde{B}$为$\tilde{A}$的余，记为$\tilde{B}=\tilde{A}^c$。
+\end{definition}
 \section{模糊C-均值算法}
 C-均值聚类是我们聚类经常用的方法之一，通过迭代计算使得目标函数达到局部最小值的时候，就是我们的最优分类。
 在模糊C-均值聚类中，我们定义目标函数为：
