@@ -1,11 +1,11 @@
 ﻿%
 % Anhui University Thesis Template for Bachelorn
 %
-%   Based on：
+%   Based on:
 %       USTC Thesis Template "USTC_Thesis_Bachelor_20120511"
 %           by XPS@USTC et al.
 %
-%   Created：
+%   Created:
 %       2014/03/06  yess@USTC, for my dearest CTT
 %
 
@@ -69,12 +69,12 @@
         \hspace{0.5em}}
 \fi
 
-%在正文中无论是否在图形环境中，用 \figcaption 均可得到图形标题
-%同样，无论是否在表格环境中，用 \tabcaption 均可得到表格标题。
+%在正文中无论是否在图形环境中,用 \figcaption 均可得到图形标题
+%同样,无论是否在表格环境中,用 \tabcaption 均可得到表格标题.
 \newcommand\figcaption{\def\@captype{figure}\caption} 
 \newcommand\tabcaption{\def\@captype{table}\caption}
 
-%提供表格环境下p{width}加强版命令，使用L{width}等可以在指定宽度的同时指定对齐方式。
+%提供表格环境下p{width}加强版命令,使用L{width}等可以在指定宽度的同时指定对齐方式.
 \newcommand{\PreserveBackslash}[1]{\let\temp=\\#1\let\\=\temp}
 \newcolumntype{C}[1]{>{\PreserveBackslash\centering}p{#1}}
 \newcolumntype{R}[1]{>{\PreserveBackslash\raggedleft}p{#1}}
@@ -164,7 +164,7 @@
     \newpage\thispagestyle{empty}\renewcommand\arraystretch{1.0}
 }
 
-%define a new title style %一种中英分为两页的扉页形式，需要校徽图案，AHU不适用
+%define a new title style %一种中英分为两页的扉页形式,需要校徽图案,AHU不适用
 \newcommand\makeseparatetitle{%
     \newpage
     \thispagestyle{empty}
@@ -291,20 +291,20 @@
                 {
                     \renewcommand\arraystretch{1.2}
                     \begin{tabular}[t]{llrr}%
-                        \songti\heiti{题$\quad$目：}
+                        \songti\heiti{题$\quad$目:}
                                                    & \multicolumn{3}{l}{\underline{\makebox[10cm][c]{\@title}}}\tabularnewline
                         \ifx\@titletail\@empty\else
                                                    & \multicolumn{3}{l}{\underline{\makebox[10cm][c]{\@titletail}}}\tabularnewline
                         \fi
-                        \songti\heiti{学生姓名：} & \underline{\makebox[3.5cm][c]{\@author}}
-                                                   & \songti\heiti{学号：}                                                              & \underline{\makebox[3cm][c]{\@No}}\tabularnewline
-                        \songti\heiti{院（系）：} & \underline{\makebox[3.5cm][c]{\@department}}
-                                                   & \songti\heiti{专业：}                                                              & \underline{\makebox[3cm][c]{\@major}}\tabularnewline
-                        \songti\heiti{入学时间：} & \multicolumn{3}{l}{\underline{\makebox[10cm][c]{\@enrolltime}}}\tabularnewline
-                        \songti\heiti{导师姓名：} & \underline{\makebox[3.5cm][c]{\@tutor}}
-                                                   & \songti\heiti{职称/学位：}                                                         & \underline{\makebox[3cm][c]{\@tutordegree}}\tabularnewline
-                        \songti\heiti{导师单位：} & \multicolumn{3}{l}{\underline{\makebox[10cm][c]{\@tutordepartment}}}\tabularnewline
-                        \songti\heiti{完成时间：} & \multicolumn{3}{l}{\underline{\makebox[10cm][c]{\@cntime}}}\tabularnewline
+                        \songti\heiti{学生姓名:} & \underline{\makebox[3.5cm][c]{\@author}}
+                                                   & \songti\heiti{学号:}                                                              & \underline{\makebox[3cm][c]{\@No}}\tabularnewline
+                        \songti\heiti{院（系）:} & \underline{\makebox[3.5cm][c]{\@department}}
+                                                   & \songti\heiti{专业:}                                                              & \underline{\makebox[3cm][c]{\@major}}\tabularnewline
+                        \songti\heiti{入学时间:} & \multicolumn{3}{l}{\underline{\makebox[10cm][c]{\@enrolltime}}}\tabularnewline
+                        \songti\heiti{导师姓名:} & \underline{\makebox[3.5cm][c]{\@tutor}}
+                                                   & \songti\heiti{职称/学位:}                                                         & \underline{\makebox[3cm][c]{\@tutordegree}}\tabularnewline
+                        \songti\heiti{导师单位:} & \multicolumn{3}{l}{\underline{\makebox[10cm][c]{\@tutordepartment}}}\tabularnewline
+                        \songti\heiti{完成时间:} & \multicolumn{3}{l}{\underline{\makebox[10cm][c]{\@cntime}}}\tabularnewline
                     \end{tabular}}\par}%
     \end{center}
     \newpage\renewcommand\arraystretch{1.0}
@@ -364,7 +364,7 @@
 
 \ifahu@TitleArt
     %\CTEXsetup[format={{\centering\heiti\xiaosihao\bfseries}}]{chapter}
-    %不知道为什么上面这行不管用，所以用下面两行代替
+    %不知道为什么上面这行不管用,所以用下面两行代替
     \CTEXsetup[nameformat={{\centering\heiti\xiaosihao\bfseries}}]{chapter}
     \CTEXsetup[titleformat={{\centering\heiti\xiaosihao\bfseries}}]{chapter}
     \CTEXsetup[format={{\songti\xiaosihao\bfseries}}]{section}
@@ -495,7 +495,7 @@
         \section*{\enabstractname}%
     \else
         \small
-        %小trick，让新环境在oneside和twoside时均能够生成正确的页面，即双面时openright可以正确生成空白页，下同
+        %小trick,让新环境在oneside和twoside时均能够生成正确的页面,即双面时openright可以正确生成空白页,下同
         \chapter*{~~}
         \vspace{-150pt}
         \addcontentsline{toc}{chapter}{\texorpdfstring{Abstract}{Abstract}}

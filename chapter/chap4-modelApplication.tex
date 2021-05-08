@@ -1,6 +1,6 @@
 \chapter{于iris数据集分类应用研究}
 \section{模糊最大熵模型的求解算法}
-在描述我们的算法之前，我们首先来定义一些模型的假设：
+在描述我们的算法之前,我们首先来定义一些模型的假设:
 \[
     \text{n个样本的m维数据集}U:U=\{u_1,u_2,\dots ,u_n\} ,u_i=\{x_1,x_2,\dots,x_m\} \forall i \\
 \]
@@ -13,23 +13,24 @@
 \[
     \text{聚类中心}V:c\times m\text{的矩阵}
 \]
-模糊最大熵模型的聚类算法步骤如下：\\
-输入：原始数据$U$和聚类数$c$\\
-输出：隶属度矩阵$A$和聚类中心$V$
+模糊最大熵模型的聚类算法步骤如下:\\
+输入:原始数据$U$和聚类数$c$\\
+输出:隶属度矩阵$A$和聚类中心$V$
 \begin{itemize}
-    \item[\bf{1)}]首先随机初始化隶属度矩阵并归一化；
-    \item[\bf{2)}]根据式\ref{Mvij}计算聚类中心；
-    \item[\bf{3)}]计算每一个元素到聚类中心的距离；
-    \item[\bf{4)}]根据式\ref{Maij}更新隶属度矩阵；
-    \item[\bf{5)}]如果到达指定精度或迭代次数，结束计算过程，否则重复$2\sim 4$步；
-    \item[\bf{6)}]输出隶属度矩阵$A$和聚类中心$V$。
+    \item[\bf{1)}]首先随机初始化隶属度矩阵并归一化;
+    \item[\bf{2)}]根据式\ref{Mvij}计算聚类中心;
+    \item[\bf{3)}]计算每一个元素到聚类中心的距离;
+    \item[\bf{4)}]根据式\ref{Maij}更新隶属度矩阵;
+    \item[\bf{5)}]如果到达指定精度或迭代次数,结束计算过程,否则重复$2\sim 4$步;
+    \item[\bf{6)}]输出隶属度矩阵$A$和聚类中心$V$.
 \end{itemize}
 
 \section{模型求解}
 \par
-本文使用的数据是来自UCI的鸢尾花(iris)数据集，这是一个经典的分类数据集，由Iris Setosa(山鸢尾)、Iris Versicolour(杂色鸢尾)，以及Iris Virginica(维吉尼亚鸢尾)三种不同类别的鸢尾花组成，
-每个样本由四个属性组成，分别是Petal.Length(花瓣长度)、Petal.Width(花瓣宽度)、Sepal.Length(花萼长度)和Sepal.Width(花萼宽度)。
-\par 按4.1的算法对iris数据集进行聚类，结果如下:
+本文使用的数据是来自UCI的鸢尾花(iris)数据集.
+这是一个经典的分类数据集,由Iris Setosa(山鸢尾)、Iris Versicolour(杂色鸢尾)和Iris Virginica(维吉尼亚鸢尾)三种不同类别的鸢尾花组成,
+每个样本由四个属性组成,分别是Petal.Length(花瓣长度)、Petal.Width(花瓣宽度)、Sepal.Length(花萼长度)和Sepal.Width(花萼宽度).
+\par 按4.1的算法对iris数据集进行聚类,结果如下:
 \begin{table}[!ht]
     \label{聚类中心}
     \caption{聚类中心}
@@ -61,4 +62,4 @@
         \whline
     \end{tabular}
 \end{table}
-从数据的比较中，可以看到模糊最大熵模型相对于FCM算法对iris的数据集分类结果有着更好的表现。
+从数据的比较中,可以看到模糊最大熵模型相对于FCM算法对iris的数据集分类结果有着更好的表现.

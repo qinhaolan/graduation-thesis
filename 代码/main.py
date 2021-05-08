@@ -11,7 +11,7 @@ Epsilon = 0.00000001
 
 def import_data_format_iris(file):
     """
-    格式化数据，前四列为data，最后一列为cluster_location
+    格式化数据,前四列为data,最后一列为cluster_location
     数据地址 http://archive.ics.uci.edu/ml/machine-learning-databases/iris/
     """
     data = []
@@ -36,7 +36,7 @@ def import_data_format_iris(file):
 
 def randomise_data(data):
     """
-    该功能将数据随机化，并保持随机化顺序的记录
+    该功能将数据随机化,并保持随机化顺序的记录
     """
     order = list(range(0, len(data)))
     random.shuffle(order)
@@ -48,7 +48,7 @@ def randomise_data(data):
 
 def de_randomise_data(data, order):
     """
-    此函数将返回数据的原始顺序，将randomise_data()返回的order列表作为参数
+    此函数将返回数据的原始顺序,将randomise_data()返回的order列表作为参数
     """
     new_data = [[] for i in range(0, len(data))]
     for index in range(len(order)):
@@ -85,7 +85,7 @@ def initialise_U(data, cluster_number):
 
 def distance(point, center):
     """
-    该函数计算2点之间的距离（作为列表）。我们指欧几里德距离、闵可夫斯基距离
+    该函数计算2点之间的距离（作为列表）.我们指欧几里德距离、闵可夫斯基距离
     """
     if len(point) != len(center):
         return -1
@@ -97,7 +97,7 @@ def distance(point, center):
 
 def end_conditon(U, U_old):
     """
-    结束条件:当U矩阵随着连续迭代停止变化时，触发结束.
+    结束条件:当U矩阵随着连续迭代停止变化时,触发结束.
     """
     global Epsilon
     for i in range(0, len(U)):
@@ -109,7 +109,7 @@ def end_conditon(U, U_old):
 
 def normalise_U(U):
     """
-    在聚类结束时使U模糊化。每个样本的隶属度最大的为1，其余为0
+    在聚类结束时使U模糊化.每个样本的隶属度最大的为1,其余为0
     """
     for i in range(0, len(U)):
         maximum = max(U[i])
@@ -121,11 +121,11 @@ def normalise_U(U):
     return U
 
 
-# m的最佳取值范围为[1.5，2.5]
+# m的最佳取值范围为[1.5,2.5]
 def fuzzy(data, cluster_number):
     """
-    这是主函数，它将计算所需的聚类中心，并返回最终的归一化隶属矩阵U.
-    参数是：簇数(cluster_number)和隶属度的因子(m)
+    这是主函数,它将计算所需的聚类中心,并返回最终的归一化隶属矩阵U.
+    参数是:簇数(cluster_number)和隶属度的因子(m)
     """
     # 计算beta
     beta = 0
@@ -141,7 +141,7 @@ def fuzzy(data, cluster_number):
     # print_matrix(U)
     # 循环更新U
     while (True):
-        # 创建它的副本，以检查结束条件
+        # 创建它的副本,以检查结束条件
         U_old = copy.deepcopy(U)
         # 计算聚类中心
         C = []
@@ -160,7 +160,7 @@ def fuzzy(data, cluster_number):
             # 第j簇的所有聚类中心
             C.append(current_cluster_center)
 
-        # 创建一个距离向量, 用于计算U矩阵。
+        # 创建一个距离向量, 用于计算U矩阵.
         distance_matrix = []
         for i in range(0, len(data)):
             current = []
@@ -200,7 +200,7 @@ def checker_iris(final_location):
         right += max(checker)
         print(right)
     answer = right / 150 * 100
-    return "准确度：" + str(answer) + "%"
+    return "准确度:" + str(answer) + "%"
 
 
 if __name__ == '__main__':
@@ -213,8 +213,8 @@ if __name__ == '__main__':
     print_matrix(data)
 
     start = time.time()
-    # 现在我们有一个名为data的列表，它只是数字
-    # 我们还有另一个名为cluster_location的列表，它给出了正确的聚类结果位置
+    # 现在我们有一个名为data的列表,它只是数字
+    # 我们还有另一个名为cluster_location的列表,它给出了正确的聚类结果位置
     # 调用模糊C均值函数
     final_location = fuzzy(data, 2)
 
@@ -224,4 +224,4 @@ if __name__ == '__main__':
 
     # 准确度分析
     print(checker_iris(final_location))
-    print("用时：{0}".format(time.time() - start))
+    print("用时:{0}".format(time.time() - start))

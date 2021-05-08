@@ -2,7 +2,7 @@ from sklearn.datasets import load_iris
 import pandas as pd
 
 iris_datasets = load_iris()
-# 可以查看一下数据类型，
+# 可以查看一下数据类型,
 type(iris_datasets)
 iris_datasets.keys()
 print(iris_datasets['DESCR'][:50])

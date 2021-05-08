@@ -1,4 +1,4 @@
-%%%计算智能assignment，使用FCM和anfis对鸢尾花进行聚类分析
+%%%计算智能assignment,使用FCM和anfis对鸢尾花进行聚类分析
 format compact
 clear
 clc
@@ -49,7 +49,7 @@ opt.DisplayStepSize = 0;
 opt.DisplayFinalResults = 1;
 opt.ValidationData = iris_test;  % 设置验证数据
 
-[fis,trainError,stepSize,chkFIS,chkError] = anfis(iris_train,opt);  %训练FIS，返回验证结果
+[fis,trainError,stepSize,chkFIS,chkError] = anfis(iris_train,opt);  %训练FIS,返回验证结果
 
 % % 训练前模糊系统输出与真值的均方误差
 % trainout1 = evalfis(iris_train(:, 1:4), infis);
@@ -63,7 +63,7 @@ opt.ValidationData = iris_test;  % 设置验证数据
 % testout2 = evalfis(iris_test(:, 1:4), fis);
 % testRMSE2 = norm(testout2-iris_test(:, 5))/sqrt(length(testout2))
 
-[minChkErr, n] = min(chkError);   % 返回验证数据的最小误差，及其对应的训练epoch数
+[minChkErr, n] = min(chkError);   % 返回验证数据的最小误差,及其对应的训练epoch数
 
 s = ['\leftarrow 最小误差为', num2str(minChkErr),',epoch=', num2str(n)];
 figure,
@@ -78,9 +78,9 @@ set(gca,'FontSize',16);
 
 %%%%%% 分类结果可视化 %%%%%%%
 [centers,U,obj_fcn] = fcm(iris,Nc,clusteringOptions);  
-% % center:迭代后得到的聚类中心；U：隶属度矩阵； obj_fcn:目标函数在迭代过程中的值
+% % center:迭代后得到的聚类中心;U:隶属度矩阵; obj_fcn:目标函数在迭代过程中的值
 
-%按照不同的“特征对”区分，画出样本的分布
+%按照不同的“特征对”区分,画出样本的分布
 figure('NumberTitle', 'off', 'Name','样本分布')
 for i = 1:6
     x = pairs(i,1); 
@@ -100,7 +100,7 @@ for i = 1:6
     end
 end
 
-% 因为样本顺序被打乱，可通过将隶属度值从大到小排列观察区分度
+% 因为样本顺序被打乱,可通过将隶属度值从大到小排列观察区分度
 U(1,:) = sort(U(1,:),'descend');
 U(2,:) = sort(U(2,:), 'descend');
 U(3,:) = sort(U(3,:), 'descend');

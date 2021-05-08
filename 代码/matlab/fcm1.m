@@ -1,10 +1,10 @@
 function [U, V,objFcn] = fcm1(data, c, T, m, epsm)
 % fuzzy c-means algorithm
-% 输入： data： 待聚类数据，n行s列，n为数据个数，s为每个数据的特征数
-%        c  ：  聚类中心个数
+% 输入: data: 待聚类数据,n行s列,n为数据个数,s为每个数据的特征数
+%        c  :  聚类中心个数
 %        m  :   模糊系数
-% 输出： U  :   隶属度矩阵，c行n列，元素uij表示第j个数据隶属于第i类的程度
-%        V  ：  聚类中心向量，c行s列，有c个中心，每个中心有s维特征
+% 输出: U  :   隶属度矩阵,c行n列,元素uij表示第j个数据隶属于第i类的程度
+%        V  :  聚类中心向量,c行s列,有c个中心,每个中心有s维特征
 % written by Zhang Jin
 % see also  :  mydist.m  myplot.m
 
@@ -34,7 +34,7 @@ while( iter<T  )
     iter = iter + 1;
     % 更新V(t)
     Um = U0.^m;
-    V = Um*data./(sum(Um,2)*ones(1,s));   % MATLAB矩阵相乘啊，好东西
+    V = Um*data./(sum(Um,2)*ones(1,s));   % MATLAB矩阵相乘啊,好东西
     % 更新U(t)
     for i = 1:c
         for j = 1:n

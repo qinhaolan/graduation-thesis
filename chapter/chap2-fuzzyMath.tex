@@ -1,95 +1,95 @@
 %TEX root=../main.tex
-\chapter[模糊C-均值聚类]{模糊C-均值聚类}
-聚类方法不仅是揭示给定数据集的基本结构的主要工具，也是揭示复杂系统的局部输入-输出关系的有效工具。
-这自然引起了许多学者的兴趣，并由此产生了许多的聚类方法。
-正如我们所知道的， 聚类问题是一个优化问题：一组物体被分割成一个合理的 具有某些特征的子群。
-这往往是在主观选择的测量函数的基础上，将一组物体分成合理数量的子组，使子组内物体之间的距离小于属于不同子组的物体之间的距离。
-对现有的聚类方法进行改进是一个非常困难的问题，在这之前我们先了解一下模糊C-均值算法(FCM)方法。
+\chapter[预备知识]{预备知识}
+聚类方法不仅是揭示给定数据集的基本结构的主要工具,也是揭示复杂系统的局部输入-输出关系的有效工具.
+这自然引起了许多学者的兴趣,并由此产生了许多的聚类方法,模糊聚类就是其中一种.
+正如我们所知道的, 聚类问题是一个优化问题:一组物体被分割成一个合理的 具有某些特征的子群.
+这往往是在主观选择的测量函数的基础上,将一组物体分成合理数量的子组,使子组内物体之间的距离小于属于不同子组的物体之间的距离.
+对现有的聚类方法进行改进是一个非常困难的问题,在这之前我们先了解一下模糊C-均值算法(FCM)方法.
 \section{模糊集及其表示方法}
 \par
-在经典集合理论里面，一个集合就是某一个概念的内涵。
-对于论域上的一个对象，它要么属于这个集合，要么不属于这个集合，两者只能选一个，不能两者兼之，也不能有模棱两可的情况。
-而对模糊数学研究的对象来说，我们不能简单地用是或否来描述一个对象是否属于一个集合。
-由此，我们把集合的特征函数的取值从$\{0,1\}$这个集合扩充到$[0,1]$这个区间上的连续取值。
-越靠近1，说明该对象属于集合的程度越大，反之，越靠近0就越小。
-%概括地说，模糊数学就是将现实世界的模糊概念抽象出来作为研究对象，然后用精确的数学方法探寻其中的数量规律的一门数学分支。
-这样我们就把经典集合扩充到带有模糊边界的模糊集了，从而我们可以用这样的集合表示模糊概念。
+在经典集合理论里面,一个集合就是某一个概念的内涵.
+对于论域上的一个对象,它要么属于这个集合,要么不属于这个集合,两者只能选一个,不能两者兼之,也不能有模棱两可的情况.
+而对模糊数学研究的对象来说,我们不能简单地用是或否来描述一个对象是否属于一个集合.
+由此,我们把集合的特征函数的取值从$\{0,1\}$这个集合扩充到$[0,1]$这个区间上的连续取值.
+越靠近1,说明该对象属于集合的程度越大,反之,越靠近0就越小.
+%概括地说,模糊数学就是将现实世界的模糊概念抽象出来作为研究对象,然后用精确的数学方法探寻其中的数量规律的一门数学分支.
+这样我们就把经典集合扩充到带有模糊边界的模糊集了,从而我们可以用这样的集合表示模糊概念.
 \subsection{模糊集的定义}
 \begin{definition}[模糊子集\scite{ZADEH1965fuzzy}]
-    设$\mathrm{U}$为我们所研究的论域，
+    设$\mathrm{U}$为我们所研究的论域,
     \[
         \mu_{\tilde{A}}: \mathrm{U} \longrightarrow[0,1]
     \]
-    称$\mu$确定了$\mathrm{U}$上的一个模糊子集，记为$\tilde{A}$。
-    $\mu$称为$\tilde{A}$的隶属函数，把$\mu_{\tilde{A}}(u)(u \in \mathrm{U})$的值称为$u$对于模糊子集$\tilde{A}$的隶属度。
-    $\mu_{\tilde{A}}(u)$越大，代表$u$隶属于$\tilde{A}$的程度越高。
-    通常，我们也把模糊子集简称为模糊集。
+    称$\mu$确定了$\mathrm{U}$上的一个模糊子集,记为$\tilde{A}$.
+    $\mu$称为$\tilde{A}$的隶属函数,把$\mu_{\tilde{A}}(u)(u \in \mathrm{U})$的值称为$u$对于模糊子集$\tilde{A}$的隶属度.
+    $\mu_{\tilde{A}}(u)$越大,代表$u$隶属于$\tilde{A}$的程度越高.
+    通常,我们也把模糊子集简称为模糊集.
 \end{definition}
 \subsection{模糊集的表示方法}
-设有限集$\mathrm{U}=\{u_1,u_2,\dots ,u_n\}$，则有限集可以用如下几种方法表示\cite{模糊数学李安贵}。
+设有限集$\mathrm{U}=\{u_1,u_2,\dots ,u_n\}$,则有限集可以用如下几种方法表示\cite{模糊数学李安贵}.
 \begin{itemize}
     \item Zadeh表示法
           \[
               \tilde{A}=\frac{\tilde{A}(u_1)}{u_1}+\frac{\tilde{A}(u_2)}{u_2}+ \dots +\frac{\tilde{A}(u_n)}{u_n}.
           \]
-          虽然我们以分式和的方式表示，但是其中的$\tilde{A}(u_i)/u_i$并不表示分数，“+”也不表示和。
-          $\tilde{A}(u_i)/u_i$表示的是元素$u_i$与对$\tilde{A}$的隶属度的一一对应关系；“+”表示的是$\tilde{A}$在论域$\mathrm{U}$上的整体。\newpage
+          虽然我们以分式和的方式表示,但是其中的$\tilde{A}(u_i)/u_i$并不表示分数,“+”也不表示和.
+          $\tilde{A}(u_i)/u_i$表示的是元素$u_i$与对$\tilde{A}$的隶属度的一一对应关系;“+”表示的是$\tilde{A}$在论域$\mathrm{U}$上的整体.\newpage
     \item 序偶表示法
           \[
               \tilde{A}=\{(\tilde{A}(u_1),u_1),(\tilde{A}(u_2),u_2),\dots ,(\tilde{A}(u_n),u_n)\}.
           \]
-          序偶表示法是从例举法演变而来，由元素的隶属度和对应的元素组成的有序对列出。
+          序偶表示法是从例举法演变而来,由元素的隶属度和对应的元素组成的有序对列出.
     \item 向量表示法
           \[
               \tilde{A}=(\tilde{A}(u_1),\tilde{A}(u_2),\dots ,\tilde{A}(u_n)).
           \]
-          向量表示法是用n维数组来实现的，在论域中的元素按一定的顺序排列时，按此顺序记录元素的隶属度。
-          此时也称$\tilde{A}$为模糊向量。
+          向量表示法是用n维数组来实现的,在论域中的元素按一定的顺序排列时,按此顺序记录元素的隶属度.
+          此时也称$\tilde{A}$为模糊向量.
 \end{itemize}
 \section{模糊集的运算及其性质}
-我们先给出模糊幂集的定义：
+我们先给出模糊幂集的定义:
 \begin{definition}
-    论域$\mathrm{U}$上的模糊子集的全体称为模糊幂集，记为$\mathscr{F}(U)$，即
+    论域$\mathrm{U}$上的模糊子集的全体称为模糊幂集,记为$\mathscr{F}(U)$,即
     \[
         \mathscr{F}(U)=\{\tilde{A} \mid \tilde{A}(u):\mathrm{U} \to [0,1]\}
     \]
 \end{definition}
-模糊集的包含与相等：
+模糊集的包含与相等:
 \begin{definition}
     设$\tilde{A}, \tilde{B} \in \mathscr{F}(U)$,如果对$\forall u \in \mathrm{U}$
-    都成立$\tilde{B}(u)\geqslant \tilde{A}(u)$,则称$\tilde{B}$包含$\tilde{A}(u)$，记作$\tilde{B}(u )\supseteq \tilde{A}(u)$。
+    都成立$\tilde{B}(u)\geqslant \tilde{A}(u)$,则称$\tilde{B}$包含$\tilde{A}(u)$,记作$\tilde{B}(u )\supseteq \tilde{A}(u)$.
 \end{definition}
 \begin{definition}
     设$\tilde{A}, \tilde{B} \in \mathscr{F}(U)$,如果对$\forall u \in \mathrm{U}$
-    都成立$\tilde{B}(u) = \tilde{A}(u)$,则称$\tilde{B}$等于$\tilde{A}(u)$，记作$\tilde{B}(u)= \tilde{A}(u)$。
+    都成立$\tilde{B}(u) = \tilde{A}(u)$,则称$\tilde{B}$等于$\tilde{A}(u)$,记作$\tilde{B}(u)= \tilde{A}(u)$.
 \end{definition}
-我们规定$a\vee b=MAX(a,b),a\wedge b=MIN(a,b)$,所以我们可以这样描述模糊集的并、交、余：
+我们规定$a\vee b=MAX(a,b),a\wedge b=MIN(a,b)$,所以我们可以这样描述模糊集的并、交、余:
 
 \begin{definition}
-    如果对于任意一个$u \in \mathrm{U}$，有$\tilde{C}(u)=\tilde{A}(u) \vee \tilde{B}$，
-    则称$\tilde{C}$为$\tilde{A}$与$\tilde{B}(u)$的并，记为$\tilde{C}=\tilde{A} \cup \tilde{B}$。
-    如果对于任意一个$u \in \mathrm{U}$，有$\tilde{C}(u)=\tilde{A}(u) \wedge \tilde{B}$，
-    则称$\tilde{C}$为$\tilde{A}$与$\tilde{B}(u)$的交，记为$\tilde{C}=\tilde{A} \cap \tilde{B}$。\\
-    它们的隶属度函数定义为：
+    如果对于任意一个$u \in \mathrm{U}$,有$\tilde{C}(u)=\tilde{A}(u) \vee \tilde{B}$,
+    则称$\tilde{C}$为$\tilde{A}$与$\tilde{B}(u)$的并,记为$\tilde{C}=\tilde{A} \cup \tilde{B}$.
+    如果对于任意一个$u \in \mathrm{U}$,有$\tilde{C}(u)=\tilde{A}(u) \wedge \tilde{B}$,
+    则称$\tilde{C}$为$\tilde{A}$与$\tilde{B}(u)$的交,记为$\tilde{C}=\tilde{A} \cap \tilde{B}$.\\
+    它们的隶属度函数定义为:
     \[
-        (\tilde{A}\cup  \tilde{B})(u) \stackrel{\text { def }}{=}\tilde{A}(u) \vee \tilde{B}(u) ， \forall u \in \mathrm{U}
+        (\tilde{A}\cup  \tilde{B})(u) \stackrel{\text { def }}{=}\tilde{A}(u) \vee \tilde{B}(u) , \forall u \in \mathrm{U}
     \]
     \[
-        (\tilde{A}\cap   \tilde{B})(u) \stackrel{\text { def }}{=}\tilde{A}(u) \wedge \tilde{B}(u) ，\forall u \in \mathrm{U}
+        (\tilde{A}\cap   \tilde{B})(u) \stackrel{\text { def }}{=}\tilde{A}(u) \wedge \tilde{B}(u) ,\forall u \in \mathrm{U}
     \]
 \end{definition}
 \begin{definition}
-    如果对于$\forall u \in \mathrm{U}$，有$\tilde{B}(u)=1-\tilde{A}(u) $，
-    则称$\tilde{B}$为$\tilde{A}$的余，记为$\tilde{B}=\tilde{A}^c$。
+    如果对于$\forall u \in \mathrm{U}$,有$\tilde{B}(u)=1-\tilde{A}(u) $,
+    则称$\tilde{B}$为$\tilde{A}$的余,记为$\tilde{B}=\tilde{A}^c$.
 \end{definition}
 \section{模糊C-均值算法}
-C-均值聚类是我们聚类经常用的方法之一，通过迭代计算使得目标函数达到局部最小值的时候，就是我们的最优分类。
-在模糊C-均值聚类中，我们定义目标函数为：
+C-均值聚类是我们聚类经常用的方法之一,通过迭代计算使得目标函数达到局部最小值的时候,就是我们的最优分类.
+在模糊C-均值聚类中,我们定义目标函数为:
 \begin{equation}
     J(A, V)=\sum_{i=1}^{c} \sum_{j=1}^{n}\left(a_{i j}\right)^{r} d_{i j}^2
 \end{equation}
-$U=\{u_1,u_2,\dots,u_n\},u_j=(x_{j1},x_{j1},\dots,x_{jm})\in R^m$为给定的$n$个样本的$m$维数据集，
-$A=(a_{i j})$是隶属度矩阵，$r$是模糊数，$d_{i k}=\| u_k-v_i\|$是第个$k$个样本到第$i$个聚类中心的距离。
+$U=\{u_1,u_2,\dots,u_n\},u_j=(x_{j1},x_{j1},\dots,x_{jm})\in R^m$为给定的$n$个样本的$m$维数据集,
+$A=(a_{i j})$是隶属度矩阵,$r$是模糊数,$d_{i k}=\| u_k-v_i\|$是第个$k$个样本到第$i$个聚类中心的距离.
 \par
 当$v_i$不变时问题等价于
 \begin{equation}
@@ -98,12 +98,12 @@ $A=(a_{i j})$是隶属度矩阵，$r$是模糊数，$d_{i k}=\| u_k-v_i\|$是第
 \begin{equation}
     s.t.  \sum_{i=i}^c a_{i k}=1.\  \forall k
 \end{equation}
-这是最优化问题，我们引入拉格朗日乘子$\lambda$,于是变为
+这是最优化问题,我们引入拉格朗日乘子$\lambda$,于是变为
 \begin{equation}
     L(A, \lambda)=\sum_{i=1}^{c} \sum_{j=1}^{n}\left(a_{i j}\right)^{r}\left\|u_{j}-v_{i}\right\|^{2}-\sum_{j=1}^{n} \lambda_{j}\left(\sum_{i=1}^{c} a_{i j}-1\right)
     \label{Lagrange}
 \end{equation}
-对式\ref{Lagrange}求导，局部最小值时必要条件为
+对式\ref{Lagrange}求导,局部最小值时必要条件为
 \begin{equation}
     \frac{\partial L(A, \lambda)}{\partial a_{i j}}=\left[r\left(a_{i j}\right)^{r-1}\left\|u_{j}-v_{i}\right\|^{2}-\lambda_{j}\right]=0
     \label{dLdAij}
@@ -124,21 +124,21 @@ $A=(a_{i j})$是隶属度矩阵，$r$是模糊数，$d_{i k}=\| u_k-v_i\|$是第
     \left(\frac{\lambda_j}{r}\right)^{\frac{1}{r-1}}=\left[\sum\limits_{i=1}^c( \frac{1}{r \|u_{j}-v_{i}\|^2})^{\frac{1}{r-1}} \right]^{-1}
     \label{lambda}
 \end{equation}
-最后将式\ref{lambda}代回式\ref{daij}得到隶属度的更新公式为：
+最后将式\ref{lambda}代回式\ref{daij}得到隶属度的更新公式为:
 \begin{equation}
     a_{i j}=\left[\sum\limits_{j=1}^c\left( \frac{\|u_{j}-v_{i}\|}{\|u_{j}-v_{j}\|} \right)^{\frac{2}{r-1}}\right]^{-1}
     \quad 1 \leqslant i \leqslant c,\quad 1 \leqslant j \leqslant n
     \label{aij}
 \end{equation}
-假设$a_{i j}$不变，原问题就变成了无约束最优化问题，必要条件为：
+假设$a_{i j}$不变,原问题就变成了无约束最优化问题,必要条件为:
 \begin{equation}
         \frac{\partial J(A, V)}{\partial v_{i}}=-\sum_{j=1}^{n} 2\left(a_{i j}\right)^{r}\left(u_{j}-v_{i}\right)=0 
 \end{equation}
 
-解之得：
+解之得:
 \begin{equation}
     v_{i}=\frac{\sum\limits_{j=1}^{n}\left(a_{i j}\right)^{r} u_{j}}{\sum\limits_{j=1}^{n}\left(a_{i j}\right)^{r}}, \quad 1 \leqslant i \leqslant c
     \label{vij}
 \end{equation}
 \par
-需要注意的是，算法中要求$v_i \neq  u_j$，因此，在遇到只有一个样本的类别时，需要将此类别排除，在聚类结束时再加上。
+需要注意的是,算法中要求$v_i \neq  u_j$,因此,在遇到只有一个样本的类别时,需要将此类别排除,在聚类结束时再加上.
