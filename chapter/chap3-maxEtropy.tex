@@ -1,48 +1,8 @@
 \chapter[模糊最大熵准则的模糊聚类模型]{模糊最大熵准则的模糊聚类}
 
-\section{最大熵原理}
-熵原本是物理学中的概念,是由热力学第二定律引出的一个物质系统的状态参量,是反映系统的混乱程度,度量信息有效性的一个重要工具.
-自从熵的概念被提出来之后,很快引起了其他领域研究者的注意,熵理论得以迅速传播,渗透进各个领域.
-\subsection{信息熵}
-1948年,香农\cite{1948A}提出了信息熵的概念,解决了信息的量化度量问题.\\
-（1）离散模糊变量的信息熵\\
-设某个离散型的随机变量 $X, \quad X$ 的分布率是 $\left\{p_{i}\right\}$, 且 $p_{i}=P\left\{X=x_{i}\right\}, 0 \leq p_{i} \leq 1$,
-$\sum_{i=1}^n \mathrm{p}_i=1, \quad(i=1,2 ,\dots, n)$ 则用信息熵来度量事件 $X$ 的确定程度为:
-\begin{equation}
-    H(X) =-\sum_{i=1}^{n} p_{i} \operatorname{\ln p}_{i}
-\end{equation}
-（2）连续连续模糊变量的信息熵\\
-假设某个连续型随机变量 $X$ ,其概率密度函数是 $p(x)$, 则该连续随机变量 $X$ 的信
-息熵为:
-\begin{equation}
-    H(X)=-\int p(x) \ln p(x) d x
-\end{equation}
-
-\subsection{最大熵}
-1957年,E.T.Jaynes提出了最大熵原理,通过把随机变量与信息熵联系起来,然后最大化信息熵.
-最大熵原理并不是某一固定的数学公式,而是一种选择随机变量的准则.
-最大熵的主要思想是,在我们只掌握未知变量的部分知识的时候,未知变量的分布可能有很多种,此时我们应该选符合这些知识的情况下,使得信息熵取得最大值的概率分布.
-
-\section{模糊熵}
-在自然界以及我们的日常生活中,经常存在着带着模糊性质的不确定现象,我们把它们定义成模糊变量.
-自从模糊理论提出以后,很多学者就在如何度量模糊变量的模糊程度这一方面进行了许多研究,
-比如Li, Pingke 和Liu, Baoding\cite{li2008entropy}、Aldo de Luca 和 Settimo Termini\cite{RN3}等.
-\begin{definition}[模糊熵]
-    对于离散变量的模糊
-    \begin{equation}
-        H(\tilde{A})=-\sum_{i=1}^{n}\tilde{A}(u_i) \ln \tilde{A}(u_i)
-    \end{equation}
-
-    对于连续的模糊变量
-    \begin{equation}
-        H(\tilde{A})=-\int_{-\infty}^{\infty}\tilde{A}(u) \ln \tilde{A}(u) d u
-    \end{equation}
-
-\end{definition}
-
-\newpage
 \section{模糊最大熵模型}
-定义了模糊熵之后,我们就可以将最大熵原理推广到模糊熵的情形.
+前面我们介绍了模糊聚类的一种常用方法:模糊C-均值聚类，介绍了模糊熵和最大熵原理。
+现在,我们就可以将最大熵原理推广到模糊熵的情形,在模糊C-均值聚类中加入模糊最大熵进行约束.
 设$a_{i j}$为第$j$个元素对于第$i$类的隶属度,则我们模糊最大熵模型(Fuzzy Maximum Entropy.FME)的目标函数可以表示成
 \begin{equation}
     \max \biggl\{-\sum_{j=1}^{n} \sum_{i=1}^{c} a_{i j}\ln a_{i j}\biggr\}
@@ -76,3 +36,29 @@ $\sum_{i=1}^n \mathrm{p}_i=1, \quad(i=1,2 ,\dots, n)$ 则用信息熵来度量�
     v_i =\frac{\sum\limits_{j=1}^n a_{i j} x_j}{\sum\limits_{j=1}^n a_{i j}}
     \label{Mvij}
 \end{equation}
+
+\section{模糊最大熵模型的求解算法}
+在描述我们的算法之前,我们首先来定义一些模型的输入输出:
+\[
+    \text{n个样本的m维数据集}U:U=\{u_1,u_2,\dots ,u_n\} ,u_i=\{x_1,x_2,\dots,x_m\} \forall i \\
+\]
+\[
+    \text{聚类数}c:2\leqslant c \leqslant n
+\]
+\[
+    \text{隶属度矩阵}A:n\times m\text{的矩阵}
+\]
+\[
+    \text{聚类中心}V:c\times m\text{的矩阵}
+\]
+模糊最大熵模型的聚类算法步骤如下:\\
+输入:原始数据$U$和聚类数$c$\\
+输出:隶属度矩阵$A$和聚类中心$V$
+\begin{itemize}
+    \item[\bf{1)}]首先随机初始化隶属度矩阵并归一化;
+    \item[\bf{2)}]根据式\ref{Mvij}计算聚类中心;
+    \item[\bf{3)}]计算每一个元素到聚类中心的距离;
+    \item[\bf{4)}]根据式\ref{Maij}更新隶属度矩阵;
+    \item[\bf{5)}]如果到达指定精度或迭代次数,结束计算过程,否则重复$2\sim 4$步;
+    \item[\bf{6)}]输出隶属度矩阵$A$和聚类中心$V$.
+\end{itemize}

@@ -24,7 +24,7 @@ gscatter(data(:,2),data(:,3),data(:,5)),title('2,3 列')
 subplot(2,3,5);
 gscatter(data(:,2),data(:,4),data(:,5)),title('2,4 列')
 subplot(2,3,6);
-gscatter(data(:,3),data(:,4),data(:,5)),title('choose:3,4 列')
+gscatter(data(:,3),data(:,4),data(:,5)),title(':3,4 列')
 %matlab2tikz("yuanshishuju.tex");
 % data=iris(:,2:5);
 %[a,b,c]=fcm1(data,3);
