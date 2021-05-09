@@ -82,8 +82,10 @@
     如果对于$\forall u \in \mathrm{U}$,有$\tilde{B}(u)=1-\tilde{A}(u) $,
     则称$\tilde{B}$为$\tilde{A}$的余,记为$\tilde{B}=\tilde{A}^c$.
 \end{definition}
+介绍完了我们的模糊集及模糊集上的运算，我们就可以来看我们模糊集上的聚类了。
 \section{模糊C-均值算法}
-C-均值聚类是我们聚类经常用的方法之一,通过迭代计算使得目标函数达到局部最小值的时候,就是我们的最优分类.
+Kmeans聚类是我们聚类经常用的方法之一,通过迭代计算使得目标函数达到局部最小值的时候,就是我们的最优分类.
+但是,Kmeans聚类是硬聚类，没有考虑到噪音数据对结果的影响，也缺少额外的约束，于是我们在模糊集上，将Kmeans硬聚类推广到模糊C-均值聚类,一种以隶属度来衡量隶属程度的软聚类.
 在模糊C-均值聚类中,我们定义目标函数为:
 \begin{equation}
     J(A, V)=\sum_{i=1}^{c} \sum_{j=1}^{n}\left(a_{i j}\right)^{r} d_{i j}^2
@@ -93,7 +95,7 @@ $A=(a_{i j})$是隶属度矩阵,$r$是模糊数,$d_{i k}=\| u_k-v_i\|$是第个$
 \par
 当$v_i$不变时问题等价于
 \begin{equation}
-    \min L(A, \lambda)=\sum_{i=1}^{c} \sum_{j=1}^{n}\left(a_{i j}\right)^{r}d_{i k}
+    \min L(A, \lambda)=\sum_{i=1}^{c} \sum_{j=1}^{n}\left(a_{i j}\right)^{r}d_{i k}^2
 \end{equation}
 \begin{equation}
     s.t.  \sum_{i=i}^c a_{i k}=1.\  \forall k
@@ -181,3 +183,5 @@ $\sum_{i=1}^n \mathrm{p}_i=1, \quad(i=1,2 ,\dots, n)$ 则用信息熵来度量�
     \end{equation}
 
 \end{definition}
+本章主要介绍了模糊聚类中的FCM算法和最大熵原理，相比于Kmeans硬聚类，FCM可以知道每一个样本隶属于每一类的概率，而不是干巴巴的0和1，从而让我们了解每一样本和每一类的相似程度;
+而最大熵原理主要是给了我们如何选择随机变量分布的一种准则.

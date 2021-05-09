@@ -15,8 +15,8 @@ L=zeros(c,n);
 
 %先计算beta
 beta=sum(sum(data,2)/s)/n;
-beta=2*(beta)^(1/n);
-% beta=2;
+% beta=2*(beta)^(1/n);
+% beta=2.5;
 %计算初始聚类中心
 V(c,s)=0;
 

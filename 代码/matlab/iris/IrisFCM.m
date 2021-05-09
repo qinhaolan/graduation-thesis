@@ -86,7 +86,7 @@ for i = 1:6
     x = pairs(i,1); 
     y = pairs(i,2);   
     subplot(2,3,i)
-    plot([setosa(:,x) versicolor(:,x) virginica(:,x)],...
+    plot([setosa(:,x) versicolor(:,x) virginica(:,x)],
          [setosa(:,y) versicolor(:,y) virginica(:,y)], '.')
     xlabel(Characteristics{x})
     ylabel(Characteristics{y})
